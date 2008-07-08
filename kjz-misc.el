@@ -6,15 +6,14 @@
 ;; In XEmacs, make the Del key delete the next character.
 (setq delete-key-deletes-forward t)
 
-;; Set the indent to be four characters in CSS mode. I really don't like the
-;; default 2.
-(setq cssm-indent-level 4)
-(setq cssm-indent-function #'cssm-c-style-indenter)
-
 ;; MMM mode configuration, especially for AOMS fulfiller config files.
-;; (require 'mmm-mode)
-;; (setq mmm-global-mode 'maybe)
-;; (setq mmm-submode-decoration-level 1)
+(require 'mmm-vars)
+(require 'mmm-mode)
+(require 'mmm-sample)
+(setq mmm-global-mode 'maybe)
+(setq mmm-submode-decoration-level 2)
+(set-face-background 'mmm-code-submode-face "#333333")
+
 ;; (mmm-add-classes
 ;;  '((aoms-config
 ;;     :submode python-mode
@@ -23,6 +22,31 @@
 ;;     :insert (?p python nil @ "<param name=\"script\"><![CDATA[\n" @ _ @ "\n]]></param>\n" @)
 ;;     )))
 
-;; Set up yasnippet for snippet support.
-(require 'yasnippet-bundle)
+;; Set up the mode classes.
+(mmm-add-classes
+ '((django-tag
+    :submode python
+    :front "{%"
+    :back "%}"
+    :include-front t
+    :include-back t)))
 
+(mmm-add-classes
+ '((django-var
+    :submode python
+    :front "{{"
+    :back "}}"
+    :include-front t
+    :include-back t)))
+
+(mmm-add-mode-ext-class 'html-mode "\\.html" 'embedded-css)
+(mmm-add-mode-ext-class 'html-mode "\\.html" 'django-tag)
+(mmm-add-mode-ext-class 'html-mode "\\.html" 'django-var)
+(mmm-add-mode-ext-class 'html-mode "\\.html" 'html-js)
+
+;; Support for NSIS script development
+(autoload 'nsi-mode "nsi-mode" "nsi editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.nsi$" . nsi-mode))
+
+;; Set up yasnippet for snippets support.
+(require 'yasnippet-bundle)

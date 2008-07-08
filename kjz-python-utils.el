@@ -1,5 +1,4 @@
 ;; Set up some stuff for Python mode
-;; (require 'snippet)
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (setq auto-mode-alist
       (append '(("\\.py$" . python-mode)) auto-mode-alist))
@@ -7,7 +6,7 @@
       (append '(("python" . python-mode)) interpreter-mode-alist))
 
 ;; Add iPython support.
-(require 'ipython)
+;(require 'ipython)
 
 ;; Set up the Speedbar to recognize whether there is an up-to-date object file
 ;; for the given python script.
@@ -23,3 +22,16 @@ normalizing Python code that has tabs in place for indentation."
   (while (search-forward "	" nil t)
     (replace-match "    " nil t)))
 
+
+;; Define a snippet for Django models.
+(yas/define 'python-mode "model"
+"class ${1:ClassName}(models.Model):
+    \"\"\"$2
+    \"\"\"
+
+    $0
+
+    class Admin:
+        pass
+
+")

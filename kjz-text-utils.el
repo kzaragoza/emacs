@@ -21,11 +21,26 @@
 	      auto-mode-alist))
 (add-hook 'rst-adjust-hook 'rst-toc-update)
 
+; Set the HTML indent value to 4 from the default of 2.
+; (setq html-helper-basic-offset 4)
+
 ; Method to call tidy on an XML document.
 (defun xml-tidy-buffer ()
   (interactive)
   (mark-whole-buffer)
   (shell-command-on-region (point-min) (point-max) "tidy -q -i -xml" nil t))
 
-; Load nxhtml mode and related support.
-(load "nxml/autostart.el")
+; Load nxhtml mode stuff
+;(load "nxml/autostart.el")
+
+; Get rid of html-helper-mode from the auto-mode-alist
+(setq auto-mode-alist
+      (remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
+
+(setq magic-mode-alist
+      (remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
+
+; load Django mode for HTML templating stuff.
+;(load "django-html-mode.el")
+;(add-to-list 'auto-mode-alist '("\\.html$" . django-html-mode))
+
