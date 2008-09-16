@@ -4,7 +4,7 @@
 (global-set-key "\r" 'newline-and-indent)
 
 ;; In XEmacs, make the Del key delete the next character.
-(setq delete-key-deletes-forward t)
+;(setq delete-key-deletes-forward t)
 
 ;; MMM mode configuration, especially for AOMS fulfiller config files.
 (require 'mmm-vars)
@@ -50,3 +50,18 @@
 
 ;; Set up yasnippet for snippets support.
 (require 'yasnippet-bundle)
+
+;; Set the initial frame size/position for Carbon Emacs.
+(if (boundp 'mac-carbon-version-string)
+    (setq initial-frame-alist '( (top . 1) (left . 1) )))
+
+;; Load ido-mode
+(ido-mode t)
+
+;; Use spaces instead of tabs pretty much everywhere. I tend to hate tabs and will
+;; happily use C-q to get them.
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+
+;; Highlight parens/brackets/etc.
+(show-paren-mode)
