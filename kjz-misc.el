@@ -1,11 +1,3 @@
-;; Set the return key to call newline-and-indent so that code can be
-;; automatically properly indented.  This change due to the fact that
-;; PC keyboards don't have a linefeed key
-(global-set-key "\r" 'newline-and-indent)
-
-;; In XEmacs, make the Del key delete the next character.
-;(setq delete-key-deletes-forward t)
-
 ;; MMM mode configuration, especially for AOMS fulfiller config files.
 (require 'mmm-vars)
 (require 'mmm-mode)
@@ -65,3 +57,9 @@
 
 ;; Highlight parens/brackets/etc.
 (show-paren-mode)
+
+;; In the general case, use newline and indent
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+;; Load up Git custom support.
+(require 'git)

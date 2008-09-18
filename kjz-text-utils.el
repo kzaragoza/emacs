@@ -44,3 +44,7 @@
 ;(load "django-html-mode.el")
 ;(add-to-list 'auto-mode-alist '("\\.html$" . django-html-mode))
 
+; Add a text mode hook to not indent lines, but rather just tab to the tab stop.
+(add-hook 'text-mode-hook
+          (lambda ()
+            (setq indent-line-function 'tab-to-tab-stop)))

@@ -1,9 +1,9 @@
 ;; Set up some stuff for Python mode
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-(setq auto-mode-alist
-      (append '(("\\.py$" . python-mode)) auto-mode-alist))
-(setq interpreter-mode-alist
-      (append '(("python" . python-mode)) interpreter-mode-alist))
+;; (autoload 'python-mode "python-mode" "Python editing mode." t)
+;; (setq auto-mode-alist
+;;       (append '(("\\.py$" . python-mode)) auto-mode-alist))
+;; (setq interpreter-mode-alist
+;;       (append '(("python" . python-mode)) interpreter-mode-alist))
 
 ;; Add iPython support.
 ;(require 'ipython)
@@ -24,14 +24,5 @@ normalizing Python code that has tabs in place for indentation."
 
 
 ;; Define a snippet for Django models.
-(yas/define 'python-mode "model"
-"class ${1:ClassName}(models.Model):
-    \"\"\"$2
-    \"\"\"
-
-    $0
-
-    class Admin:
-        pass
-
-")
+(yas/define 'python-mode "render"
+            "render_to_response(\"${1:template}\", ${2:locals()}, context_instance=RequestContext(request))$0")
