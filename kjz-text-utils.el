@@ -47,4 +47,6 @@
 ; Add a text mode hook to not indent lines, but rather just tab to the tab stop.
 (add-hook 'text-mode-hook
           (lambda ()
-            (setq indent-line-function 'tab-to-tab-stop)))
+            (setq indent-line-function 'tab-to-tab-stop)
+            (local-set-key (kbd "RET") 'newline)))
+
