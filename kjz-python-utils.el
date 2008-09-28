@@ -31,11 +31,12 @@ normalizing Python code that has tabs in place for indentation."
 (defun django-start-server ()
   "Starts the Django development server."
   (interactive)
-  (start-process "django-dev-server" "*Django Server*" "/Users/kjz/projects/dtg/manage.py" "runserver")
-  (message "Django server started."))
+  (let ((server-cmd (concat default-directory "manage.py")))
+    (start-process "django-dev-server" "*Django Server*" server-cmd "runserver")
+    (message "Django server started.")))
 
 (defun django-stop-server()
   "Stops the Django development server."
   (interactive)
-  (signal-process "django-dev-server" 2) ; Send a SIGINT to stop the server.
+  (interrupt-process "django-dev-server") ; Send a SIGINT to stop the server.
   (message "Django server stopped."))
