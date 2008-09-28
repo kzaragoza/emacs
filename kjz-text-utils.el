@@ -2,8 +2,8 @@
 
 ; Wire up longlines-mode so we get some nice word wrapping in text modes.
 (autoload 'longlines-mode "longlines.el" "Minor mode for editing long lines." t)
-(add-hook 'text-mode-hook 'longlines-mode)
-(add-hook 'sgml-mode-hook 'longlines-mode-off) ; Don't want this in XML/HTML docs.
+;; (add-hook 'text-mode-hook 'longlines-mode)
+;; (add-hook 'sgml-mode-hook 'longlines-mode-off) ; Don't want this in XML/HTML docs.
 
 ;; When in Text mode, turn on auto-fill-mode
 ;(add-hook 'text-mode-hook (lambda () (auto-fill-mode t)))
@@ -45,8 +45,8 @@
 ;(add-to-list 'auto-mode-alist '("\\.html$" . django-html-mode))
 
 ; Add a text mode hook to not indent lines, but rather just tab to the tab stop.
-(add-hook 'text-mode-hook
-          (lambda ()
-            (setq indent-line-function 'tab-to-tab-stop)
-            (local-set-key (kbd "RET") 'newline)))
+;; (add-hook 'text-mode-hook
+;;           (lambda ()
+;;             (setq indent-line-function 'tab-to-tab-stop)
+;;             (local-set-key (kbd "RET") 'newline)))
 
