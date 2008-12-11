@@ -14,6 +14,7 @@
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
  '(mac-emulate-three-button-mouse t)
  '(save-abbrevs nil)
  '(sgml-basic-offset 4)
