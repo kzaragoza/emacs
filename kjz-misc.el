@@ -63,3 +63,10 @@
 
 ;; Load up Git custom support.
 (require 'git)
+
+;; Easy toggle to full-screen mode.
+(defun fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen
+                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+(global-set-key [(meta return)] 'fullscreen)
