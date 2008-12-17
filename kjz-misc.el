@@ -62,7 +62,8 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Load up Git custom support.
-(require 'git)
+;(require 'git)
+(autoload 'magit-status "magit.el" "Start Magit Git integration" 't)
 
 ;; Easy toggle to full-screen mode.
 (defun fullscreen ()
@@ -70,3 +71,6 @@
   (set-frame-parameter nil 'fullscreen
                        (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [(meta return)] 'fullscreen)
+
+;; Set up access to the MySQL command line interface.
+(setq sql-mysql-program "/usr/local/mysql/bin/mysql")

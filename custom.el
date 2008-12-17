@@ -16,6 +16,7 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(mac-emulate-three-button-mouse t)
+ '(mmm-submode-decoration-level 0)
  '(save-abbrevs nil)
  '(sgml-basic-offset 4)
  '(show-paren-style (quote mixed))
