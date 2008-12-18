@@ -74,3 +74,6 @@
 
 ;; Set up access to the MySQL command line interface.
 (setq sql-mysql-program "/usr/local/mysql/bin/mysql")
+
+;; Use buffer-menu rather than the buffer list.
+(global-set-key "\C-x\C-b" 'buffer-menu)
