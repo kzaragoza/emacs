@@ -1,4 +1,5 @@
 ;; MMM mode configuration, especially for AOMS fulfiller config files.
+(add-to-list 'load-path "~/.emacs.d/vendor/mmm")
 (require 'mmm-vars)
 (require 'mmm-mode)
 (require 'mmm-sample)
@@ -6,6 +7,8 @@
 (setq mmm-submode-decoration-level 2)
 (set-face-background 'mmm-code-submode-face "#333333")
 
+;; This application is now defunct. However, it's a nice example of how to configure
+;; MMM mode for something totally custom.
 ;; (mmm-add-classes
 ;;  '((aoms-config
 ;;     :submode python-mode
@@ -63,7 +66,11 @@
 
 ;; Load up Git custom support.
 ;(require 'git)
+(add-to-list 'load-path "~/.emacs.d/vendor/magit")
 (autoload 'magit-status "magit.el" "Start Magit Git integration" 't)
+(if (boundp 'Info-additional-directory-list)
+    (add-to-list 'Info-additional-directory-list "~/.emacs.d/vendor/magit")
+  (setq Info-additional-directory-list '("~/.emacs.d/vendor/magit")))
 
 ;; Easy toggle to full-screen mode.
 (defun fullscreen ()
@@ -77,3 +84,8 @@
 
 ;; Use buffer-menu rather than the buffer list.
 (global-set-key "\C-x\C-b" 'buffer-menu)
+
+;; Set up windmove to move between windows in a frame. Use the Meta key rather
+;; than the default Shift key.
+(require 'windmove)
+(windmove-default-keybindings 'meta)
