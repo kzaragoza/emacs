@@ -1,3 +1,6 @@
+;; Set up load path for the one-off files.
+(add-to-list 'load-path "~/.emacs.d/vendor")
+
 ;; MMM mode configuration, especially for AOMS fulfiller config files.
 (add-to-list 'load-path "~/.emacs.d/vendor/mmm")
 (require 'mmm-vars)
