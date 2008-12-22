@@ -1,4 +1,4 @@
-;;; This is the .emacs file for NT Emacs
+;;; This is my .emacs file
 (message "Loading .emacs...")
 
 (add-to-list 'load-path "~/.emacs.d/" 't)
@@ -11,6 +11,7 @@
 ;; Custom code and utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "kjz-misc.el")
+(load "kjz-mmm.el")
 (load "kjz-python-utils.el")
 (load "kjz-text-utils.el")
 
@@ -21,5 +22,3 @@
 
 (message "Loading .emacs done.")
 
-
-(put 'narrow-to-region 'disabled nil)
