@@ -24,15 +24,21 @@
     :back "%}"
     :include-front t
     :include-back t)
-  '(django-var
+  (django-var
     :submode python-mode
     :front "{{"
     :back "}}"
     :include-front t
-    :include-back t)))
+    :include-back t)
+  (mxml-as
+    :submode javascript-mode
+    :front "<mx:Script>[\t\n ]*<!\\[CDATA\\["
+    :back "]]>[\t\n ]*</mx:Script>"
+    :face 'mmm-default-submode-face)))
 
 (mmm-add-mode-ext-class 'html-mode "\\.html" 'embedded-css)
 (mmm-add-mode-ext-class 'html-mode "\\.html" 'django-tag)
 (mmm-add-mode-ext-class 'html-mode "\\.html" 'django-var)
 (mmm-add-mode-ext-class 'html-mode "\\.html" 'html-js)
-
+(mmm-add-mode-ext-class 'sgml-mode "\\.mxml" 'mxml-as) ; This should catch XML files too.
+(mmm-add-mode-ext-class 'xml-mode "\\.mxml" 'mxml-as) ; Just in case.
