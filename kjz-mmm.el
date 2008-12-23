@@ -1,11 +1,10 @@
 ;; MMM mode configuration, especially for AOMS fulfiller config files.
 (add-to-list 'load-path "~/.emacs.d/vendor/mmm")
-(require 'mmm-vars)
 (require 'mmm-mode)
-(require 'mmm-sample)
 (setq mmm-global-mode 'maybe)
-(setq mmm-submode-decoration-level 2)
+(setq mmm-submode-decoration-level 1)
 (set-face-background 'mmm-code-submode-face "#333333")
+(set-face-background 'mmm-default-submode-face "#333333")
 
 ;; This application is now defunct. However, it's a nice example of how to configure
 ;; MMM mode for something totally custom.
@@ -20,15 +19,13 @@
 ;; Set up the mode classes.
 (mmm-add-classes
  '((django-tag
-    :submode python
+    :submode python-mode
     :front "{%"
     :back "%}"
     :include-front t
-    :include-back t)))
-
-(mmm-add-classes
- '((django-var
-    :submode python
+    :include-back t)
+  '(django-var
+    :submode python-mode
     :front "{{"
     :back "}}"
     :include-front t
