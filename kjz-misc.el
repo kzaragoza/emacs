@@ -31,6 +31,13 @@
 ;; Tell Emacs not to disable narrow functionality.
 (put 'narrow-to-region 'disabled nil)
 
+;; Set the frame title to show the full file path name or buffer name.
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+
+;; Turn on column numbers in all buffers.
+(column-number-mode 't)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,6 +51,9 @@
 
 ;; Load ido-mode
 (ido-mode t)
+(setq ido-enable-prefix t
+      ido-enable-flex-matching t
+      ido-use-filename-at-point t)
 
 ;; Load up Git custom support.
 ;(require 'git)
@@ -66,8 +76,53 @@
 
 ;; Easy toggle to full-screen mode.
 (defun fullscreen ()
+  "Toggles the current frame to full-screen and back."
   (interactive)
   (set-frame-parameter nil 'fullscreen
                        (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [(meta return)] 'fullscreen)
 
+;; Set up a convenient way to bounce arond between symbols in a programming buffer.
+(defun ido-imenu ()
+  "Update the imenu index and then use ido to select a symbol to navigate to."
+  (interactive)
+  (imenu--make-index-alist)
+  (let ((name-and-pos '())
+        (symbol-names '()))
+    (flet ((addsymbols (symbol-list)
+                       (when (listp symbol-list)
+                         (dolist (symbol symbol-list)
+                           (let ((name nil) (position nil))
+                             (cond
+                              ((and (listp symbol) (imenu--subalist-p symbol))
+                               (addsymbols symbol))
+                              
+                              ((listp symbol)
+                               (setq name (car symbol))
+                               (setq position (cdr symbol)))
+                              
+                              ((stringp symbol)
+                               (setq name symbol)
+                               (setq position (get-text-property 1 'org-imenu-marker symbol))))
+                             
+                             (unless (or (null position) (null name))
+                               (add-to-list 'symbol-names name)
+                               (add-to-list 'name-and-pos (cons name position))))))))
+      (addsymbols imenu--index-alist))
+    (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
+           (position (cdr (assoc selected-symbol name-and-pos))))
+      (goto-char position))))
+(global-set-key (kbd "C-x C-i") 'ido-imenu)
+
+;; Utility functions for common stuff.
+
+(defun untabify-buffer ()
+  "Run untabify on the whole buffer."
+  (interactive)
+  (untabify (point-min) (point-max)))
+ 
+(defun indent-buffer ()
+  "Run indent-region on the whole buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+ 
