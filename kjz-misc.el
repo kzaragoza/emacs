@@ -49,6 +49,9 @@
 ;; Set up yasnippet for snippets support.
 (require 'yasnippet-bundle)
 
+;; Load imenu. We'll need this loaded for a custom function below.
+(require 'imenu)
+
 ;; Load ido-mode
 (ido-mode t)
 (setq ido-enable-prefix t
