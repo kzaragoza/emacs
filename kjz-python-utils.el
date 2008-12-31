@@ -31,7 +31,7 @@ normalizing Python code that has tabs in place for indentation."
 (defun django-start-server ()
   "Starts the Django development server."
   (interactive)
-  (let ((server-cmd (expand-file-name (concat default-directory "manage.py"))))
+  (let ((server-cmd (expand-file-name (concat (file-name-as-directory (django-find-project-root)) "manage.py"))))
     (if (file-exists-p server-cmd)
         (progn
           (start-process "django-dev-server" "*Django Server*" "python" server-cmd "runserver")
@@ -43,3 +43,11 @@ normalizing Python code that has tabs in place for indentation."
   (interactive)
   (interrupt-process "django-dev-server") ; Send a SIGINT to stop the server.
   (message "Django server stopped."))
+
+(defun django-find-project-root (&optional root)
+  (when (null root) (setq root default-directory))
+  (cond
+   ((member "manage.py" (directory-files root)) (expand-file-name root)) ; Found it. Return the directory name.
+   ((equal (expand-file-name root) "/") nil) ; Hit root directory. Return nil.
+   (t (django-find-project-root (concat (file-name-as-directory root) ".."))))) ; Recurse and try parent directory.
+
