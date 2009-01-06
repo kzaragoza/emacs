@@ -73,6 +73,14 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+;; Set up org mode for tracking TODOs and such.
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(global-set-key (kbd "\C-ca") 'org-agenda)
+(setq org-log-done t)
+(setq org-agenda-files (list "~/TODO.org"))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
