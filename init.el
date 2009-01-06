@@ -20,5 +20,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (server-start)
 
+; Load my TODO list.
+(find-file "~/TODO.org")
+
 (message "Loading .emacs done.")
 
