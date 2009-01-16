@@ -38,6 +38,10 @@
 ;; Turn on column numbers in all buffers.
 (column-number-mode 't)
 
+;; Set up mouse wheel to scroll only one line at a time rather than the
+;; default 5.
+(setq mouse-wheel-scroll-amount '(1 ((shift . 1)) ((control) . nil)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
