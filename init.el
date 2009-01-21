@@ -14,6 +14,7 @@
 (load "kjz-mmm.el")
 (load "kjz-python-utils.el")
 (load "kjz-text-utils.el")
+(load "kjz-lisp.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Start the Emacs server so I can use emacsclient from the command line.
