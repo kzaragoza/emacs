@@ -18,7 +18,7 @@
 (add-hook 'rst-adjust-hook 'rst-toc-update)
 
 ; Function to call tidy on an XML document.
-(setq xml-tidy-command "tidy -q -i -xml")
+(setq xml-tidy-command "tidy -q -i -xml -wrap 75")
 (defun xml-tidy-buffer ()
   (interactive)
   (save-excursion
