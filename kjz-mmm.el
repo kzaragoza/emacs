@@ -31,7 +31,7 @@
     :include-front t
     :include-back t)
   (mxml-as
-    :submode javascript-mode
+    :submode actionscript-mode
     :front "<mx:Script>[\t\n ]*<!\\[CDATA\\["
     :back "]]>[\t\n ]*</mx:Script>"
     :face 'mmm-default-submode-face)))

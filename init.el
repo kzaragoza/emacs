@@ -11,9 +11,10 @@
 ;; Custom code and utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "kjz-misc.el")
-(load "kjz-mmm.el")
+(load "kjz-flex.el")
 (load "kjz-python-utils.el")
 (load "kjz-text-utils.el")
+(load "kjz-mmm.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Start the Emacs server so I can use emacsclient from the command line.
