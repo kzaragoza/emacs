@@ -42,6 +42,9 @@
 ;; default 5.
 (setq mouse-wheel-scroll-amount '(1 ((shift . 1)) ((control) . nil)))
 
+;; Bind F5 to revert-buffer for convenience.
+(global-set-key [f5] 'revert-buffer-without-confirm)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -141,3 +144,7 @@
   (interactive)
   (indent-region (point-min) (point-max)))
  
+(defun revert-buffer-without-confirm ()
+  "Call revert-buffer without confirming the revert."
+  (interactive)
+  (revert-buffer nil t))
