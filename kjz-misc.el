@@ -147,4 +147,5 @@
 (defun revert-buffer-without-confirm ()
   "Call revert-buffer without confirming the revert."
   (interactive)
-  (revert-buffer nil t))
+  (revert-buffer nil t)
+  (message "Reloaded."))
