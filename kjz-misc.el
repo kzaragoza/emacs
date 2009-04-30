@@ -130,7 +130,7 @@
     (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
            (position (cdr (assoc selected-symbol name-and-pos))))
       (goto-char position))))
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "C-x j") 'ido-imenu)
 
 ;; Utility functions for common stuff.
 
