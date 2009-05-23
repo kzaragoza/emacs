@@ -33,3 +33,6 @@
 ;; Enable SRecode (Template management) minor-mode.
 ;; (global-srecode-minor-mode 1)
 
+;; Now set up ECB proper.
+(add-to-list 'load-path "~/.emacs.d/vendor/ecb-2.40")
+(require 'ecb)
