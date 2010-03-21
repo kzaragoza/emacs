@@ -76,10 +76,6 @@
 ;; Set up access to the MySQL command line interface.
 (setq sql-mysql-program "/usr/local/mysql/bin/mysql")
 
-;; Set up Steve Yegge's JS2 mode.
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
 ;; Set up org mode for tracking TODOs and such.
 (require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))

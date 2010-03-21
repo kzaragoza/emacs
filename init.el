@@ -18,6 +18,7 @@
 (load "kjz-confluence.el")
 (load "kjz-lisp.el")
 (load "kjz-ecb.el")
+(load "kjz-javascript.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Start the Emacs server so I can use emacsclient from the command line.
