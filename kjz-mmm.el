@@ -6,6 +6,13 @@
 (set-face-background 'mmm-code-submode-face "#333333")
 (set-face-background 'mmm-default-submode-face "#333333")
 
+;; Set up the preferred major modes to use for various languages.
+(setq mmm-major-mode-preferences
+      '((perl cperl-mode perl-mode)
+        (javascript espresso-mode c++-mode)
+        (java jde-mode java-mode c++-mode)
+        (css css-mode c++-mode)))
+
 ;; This application is now defunct. However, it's a nice example of how to configure
 ;; MMM mode for something totally custom.
 ;; (mmm-add-classes
@@ -42,3 +49,5 @@
 (mmm-add-mode-ext-class 'html-mode "\\.html" 'html-js)
 (mmm-add-mode-ext-class 'sgml-mode "\\.mxml" 'mxml-as) ; This should catch XML files too.
 (mmm-add-mode-ext-class 'xml-mode "\\.mxml" 'mxml-as) ; Just in case.
+(mmm-add-mode-ext-class 'html-mode "\\.jsp" 'jsp)
+
