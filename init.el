@@ -17,7 +17,6 @@
 (load "kjz-mmm.el")
 (load "kjz-confluence.el")
 (load "kjz-lisp.el")
-(load "kjz-ecb.el")
 (load "kjz-javascript.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
