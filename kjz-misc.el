@@ -45,6 +45,11 @@
 ;; Bind F5 to revert-buffer for convenience.
 (global-set-key [f5] 'revert-buffer-without-confirm)
 
+;; Store backup files in a separate directory.
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -83,6 +88,11 @@
 (setq org-log-done t)
 (setq org-agenda-files (list "~/TODO.org"))
 
+;; Set up utility for finding files within a project.
+; This lets us scope our searches to the app subdirectories in the Sermo codebase.
+(setq ffip-project-file '("Rakefile" ".git"))
+(global-set-key (kbd "M-p") 'find-file-in-project)
+(global-set-key (kbd "C-x t") 'find-file-in-project)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
