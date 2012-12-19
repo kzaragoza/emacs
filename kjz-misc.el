@@ -68,7 +68,7 @@
 (ido-mode t)
 (setq ido-enable-prefix t
       ido-enable-flex-matching t
-      ido-use-filename-at-point t)
+      ido-use-filename-at-point nil)
 
 ;; Load up Git custom support.
 ;(require 'git)
