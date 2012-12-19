@@ -23,6 +23,7 @@
 (load "kjz-confluence.el")
 (load "kjz-lisp.el")
 (load "kjz-javascript.el")
+(load "kjz-ruby.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Start the Emacs server so I can use emacsclient from the command line.
