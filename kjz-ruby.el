@@ -1,3 +1,6 @@
+;; Make sure Rake files open in ruby-mode.
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+
 ;; Fix up our path by taking it from the shell.
 (defun set-exec-path-from-shell-PATH () 
   (interactive) 
