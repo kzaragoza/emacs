@@ -72,11 +72,11 @@
 
 ;; Load up Git custom support.
 ;(require 'git)
-(add-to-list 'load-path "~/.emacs.d/vendor/magit")
-(autoload 'magit-status "magit.el" "Start Magit Git integration" 't)
-(if (boundp 'Info-additional-directory-list)
-    (add-to-list 'Info-additional-directory-list "~/.emacs.d/vendor/magit")
-  (setq Info-additional-directory-list '("~/.emacs.d/vendor/magit")))
+;; (add-to-list 'load-path "~/.emacs.d/vendor/magit")
+;; (autoload 'magit-status "magit.el" "Start Magit Git integration" 't)
+;; (if (boundp 'Info-additional-directory-list)
+;;     (add-to-list 'Info-additional-directory-list "~/.emacs.d/vendor/magit")
+;;   (setq Info-additional-directory-list '("~/.emacs.d/vendor/magit")))
 
 ;; Set up access to the MySQL command line interface.
 (setq sql-mysql-program "/usr/local/mysql/bin/mysql")
