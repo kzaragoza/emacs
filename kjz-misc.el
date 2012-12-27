@@ -56,6 +56,9 @@
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-Z") 'zap-to-char)
 
+;; Set up expand-region, a nifty little tool.
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -99,6 +102,9 @@
 (setq ffip-project-file '("Rakefile" ".git"))
 (global-set-key (kbd "M-p") 'find-file-in-project)
 (global-set-key (kbd "C-x t") 'find-file-in-project)
+
+;; Go ahead and delete text if you start typing while the region is enabled.
+(delete-selection-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
