@@ -68,7 +68,8 @@
 (add-to-list 'auto-mode-alist '("\\.nsi$" . nsi-mode))
 
 ;; Set up yasnippet for snippets support.
-;;(require 'yasnippet-bundle)
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;; Load imenu. We'll need this loaded for a custom function below.
 (require 'imenu)

@@ -23,10 +23,6 @@ normalizing Python code that has tabs in place for indentation."
     (replace-match "    " nil t)))
 
 
-;; Define a snippet for Django models.
-(yas/define 'python-mode "render"
-            "render_to_response(\"${1:template}\", ${2:locals()}, context_instance=RequestContext(request))$0")
-
 ;; Define a couple of useful commands for Django development.
 (defun django-start-server ()
   "Starts the Django development server."

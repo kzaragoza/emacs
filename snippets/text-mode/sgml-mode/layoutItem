@@ -1,3 +1,0 @@
-#name : layoutItem template for stims
-# --
-<layoutItem name="$1" description="$2" readOnly="${3:0}" maxChars="${4:250}" x="${5:0}" y="${6:0}" width="$7" height="$8" styles="$9" scale="${10:1}" rotation="${11:0}" dataBinding="${12:\${0}}" layoutTypeId="$13" defaultValue="$14" />$0
