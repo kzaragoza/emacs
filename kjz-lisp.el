@@ -1,7 +1,7 @@
 ;; Set up Clojure support.
 (add-to-list 'load-path "~/.emacs.d/vendor/clojure-mode")
 (setq inferior-lisp-program "~/bin/clj")
-(require 'clojure-auto)
+(require 'clojure-mode)
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 (add-hook 'clojure-mode-hook
           '(lambda ()

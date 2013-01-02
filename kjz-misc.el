@@ -50,6 +50,15 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
+;; Load the misc library and rewire M-z to zap up to a char rather than
+;; blow the char away.
+(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-Z") 'zap-to-char)
+
+;; Set up expand-region, a nifty little tool.
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -59,7 +68,7 @@
 (add-to-list 'auto-mode-alist '("\\.nsi$" . nsi-mode))
 
 ;; Set up yasnippet for snippets support.
-(require 'yasnippet-bundle)
+;;(require 'yasnippet-bundle)
 
 ;; Load imenu. We'll need this loaded for a custom function below.
 (require 'imenu)
@@ -72,11 +81,11 @@
 
 ;; Load up Git custom support.
 ;(require 'git)
-(add-to-list 'load-path "~/.emacs.d/vendor/magit")
-(autoload 'magit-status "magit.el" "Start Magit Git integration" 't)
-(if (boundp 'Info-additional-directory-list)
-    (add-to-list 'Info-additional-directory-list "~/.emacs.d/vendor/magit")
-  (setq Info-additional-directory-list '("~/.emacs.d/vendor/magit")))
+;; (add-to-list 'load-path "~/.emacs.d/vendor/magit")
+;; (autoload 'magit-status "magit.el" "Start Magit Git integration" 't)
+;; (if (boundp 'Info-additional-directory-list)
+;;     (add-to-list 'Info-additional-directory-list "~/.emacs.d/vendor/magit")
+;;   (setq Info-additional-directory-list '("~/.emacs.d/vendor/magit")))
 
 ;; Set up access to the MySQL command line interface.
 (setq sql-mysql-program "/usr/local/mysql/bin/mysql")
@@ -93,6 +102,9 @@
 (setq ffip-project-file '("Rakefile" ".git"))
 (global-set-key (kbd "M-p") 'find-file-in-project)
 (global-set-key (kbd "C-x t") 'find-file-in-project)
+
+;; Go ahead and delete text if you start typing while the region is enabled.
+(delete-selection-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
