@@ -1,6 +1,9 @@
 ;; Make sure Rake files open in ruby-mode.
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 
+;; Make the return key do a newline and indent.
+(add-hook 'ruby-mode-hook (lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
+
 ;; Fix up our path by taking it from the shell.
 (defun set-exec-path-from-shell-PATH () 
   (interactive) 
