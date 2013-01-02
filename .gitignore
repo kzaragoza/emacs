@@ -3,3 +3,6 @@ auto-save-list/*
 server/server
 *~
 elpa/
+eshell/
+tramp
+url/
