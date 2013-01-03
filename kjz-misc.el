@@ -59,6 +59,10 @@
 ;; Set up expand-region, a nifty little tool.
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+;; Bind C-x C-d to dired as well. I never use list-directory, but I sometimes
+;; hit that keybinding by accident.
+(global-set-key (kbd "C-x C-d") 'ido-dired)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
