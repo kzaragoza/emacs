@@ -21,7 +21,7 @@
 (load "kjz-python-utils.el")
 (load "kjz-text-utils.el")
 (load "kjz-mmm.el")
-(load "kjz-confluence.el")
+;(load "kjz-confluence.el")
 (load "kjz-lisp.el")
 (load "kjz-javascript.el")
 (load "kjz-ruby.el")
