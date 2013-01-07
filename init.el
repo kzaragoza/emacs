@@ -18,8 +18,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "kjz-misc.el")
 (load "kjz-flex.el")
-(load "kjz-python-utils.el")
-(load "kjz-text-utils.el")
+(load "kjz-python.el")
+(load "kjz-text.el")
 (load "kjz-mmm.el")
 ;(load "kjz-confluence.el")
 (load "kjz-lisp.el")
