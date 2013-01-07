@@ -63,6 +63,9 @@
 ;; hit that keybinding by accident.
 (global-set-key (kbd "C-x C-d") 'ido-dired)
 
+;; Set up just the rectangle stuff from CUA mode.
+(cua-selection-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
