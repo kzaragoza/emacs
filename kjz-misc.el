@@ -88,7 +88,7 @@
       ido-use-filename-at-point nil)
 
 ;; Set up access to the MySQL command line interface.
-(setq sql-mysql-program "/usr/local/mysql/bin/mysql")
+(setq sql-mysql-program "/usr/local/bin/mysql")
 
 ;; Set up org mode for tracking TODOs and such.
 (require 'org)
