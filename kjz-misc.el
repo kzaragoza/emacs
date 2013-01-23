@@ -66,6 +66,9 @@
 ;; Set up just the rectangle stuff from CUA mode.
 (cua-selection-mode 1)
 
+;; Bind a useful keystroke to magit-status since I use it so damned much.
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
