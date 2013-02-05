@@ -11,7 +11,41 @@
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+;; Set up packages and ensure that certain things are installed.
 (package-initialize)
+
+(setq *required-packages*
+      (list
+       'csharp-mode
+       'expand-region
+       'find-file-in-project
+       'findr
+       'inf-ruby
+       'inflections
+       'ipython
+       'jump
+       'lorem-ipsum
+       'magit
+       'markdown-mode
+       'mmm-mode
+       'rinari
+       'rspec-mode
+       'ruby-compilation
+       'rvm
+       'yasnippet))
+
+(defun kjz-ensure-packages-installed (packages)
+  (mapc (lambda (name)
+          (when (not (package-installed-p name))
+            (package-install name)))
+        packages))
+
+(condition-case nil
+    (kjz-ensure-packages-installed *required-packages*)
+    (error
+     (package-refresh-contents)
+     (kjz-ensure-packages-installed *required-packages*)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom code and utilities
