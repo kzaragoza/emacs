@@ -99,7 +99,6 @@
 
 ;; Set up utility for finding files within a project.
 ; This lets us scope our searches to the app subdirectories in the Sermo codebase.
-(setq ffip-project-file '("Rakefile" ".git"))
 (global-set-key (kbd "M-p") 'find-file-in-project)
 (global-set-key (kbd "C-x t") 'find-file-in-project)
 
