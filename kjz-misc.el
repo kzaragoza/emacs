@@ -5,6 +5,10 @@
 ;; Set up load path for the one-off files.
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+;; Load the PATH from the system.
+(when (equal system-type 'darwin)
+  (exec-path-from-shell-initialize))
+
 ;; Set the initial frame size/position for Carbon Emacs.
 (if (boundp 'mac-carbon-version-string)
     (setq initial-frame-alist '( (top . 1) (left . 1) )))

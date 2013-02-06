@@ -19,6 +19,7 @@
       (list
        'csharp-mode
        'expand-region
+       'exec-path-from-shell
        'find-file-in-project
        'findr
        'inf-ruby
