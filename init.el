@@ -34,7 +34,8 @@
        'rspec-mode
        'ruby-compilation
        'rvm
-       'yasnippet))
+       'yasnippet
+       'multiple-cursors))
 
 (defun kjz-ensure-packages-installed (packages)
   (mapc (lambda (name)
