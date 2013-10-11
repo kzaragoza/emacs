@@ -18,10 +18,12 @@
 (setq *required-packages*
       (list
        'csharp-mode
-       'expand-region
        'exec-path-from-shell
+       'expand-region
        'find-file-in-project
        'findr
+       'helm
+       'helm-ls-git
        'inf-ruby
        'inflections
        'ipython
@@ -30,12 +32,13 @@
        'magit
        'markdown-mode
        'mmm-mode
+       'multiple-cursors
        'rinari
        'rspec-mode
        'ruby-compilation
        'rvm
        'yasnippet
-       'multiple-cursors))
+       ))
 
 (defun kjz-ensure-packages-installed (packages)
   (mapc (lambda (name)

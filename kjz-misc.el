@@ -103,8 +103,15 @@
 
 ;; Set up utility for finding files within a project.
 ; This lets us scope our searches to the app subdirectories in the Sermo codebase.
-(global-set-key (kbd "M-p") 'find-file-in-project)
+;(global-set-key (kbd "M-p") 'find-file-in-project)
 (global-set-key (kbd "C-x t") 'find-file-in-project)
+
+;; Set up helm
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "M-p") 'helm-ls-git-ls)
+(helm-mode 1)
 
 ;; Go ahead and delete text if you start typing while the region is enabled.
 (delete-selection-mode t)
