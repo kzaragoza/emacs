@@ -13,8 +13,6 @@
  '(ecb-options-version "2.40")
  '(fill-column 80)
  '(fringe-mode (quote (nil . 0)) nil (fringe))
- '(ido-enable-flex-matching t)
- '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(mac-emulate-three-button-mouse t)

@@ -65,7 +65,7 @@
 
 ;; Bind C-x C-d to dired as well. I never use list-directory, but I sometimes
 ;; hit that keybinding by accident.
-(global-set-key (kbd "C-x C-d") 'ido-dired)
+(global-set-key (kbd "C-x C-d") 'dired)
 
 ;; Set up just the rectangle stuff from CUA mode.
 (cua-selection-mode 1)
@@ -82,14 +82,9 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;; Load imenu. We'll need this loaded for a custom function below.
+;; Load imenu. I use this for jumping around source files.
 (require 'imenu)
-
-;; Load ido-mode
-(ido-mode t)
-(setq ido-enable-prefix t
-      ido-enable-flex-matching t
-      ido-use-filename-at-point nil)
+(global-set-key (kbd "C-x j") 'imenu)
 
 ;; Set up access to the MySQL command line interface.
 (setq sql-mysql-program "/usr/local/bin/mysql")
@@ -140,37 +135,6 @@
                        (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [(meta return)] 'fullscreen)
 
-;; Set up a convenient way to bounce arond between symbols in a programming buffer.
-(defun ido-imenu ()
-  "Update the imenu index and then use ido to select a symbol to navigate to."
-  (interactive)
-  (imenu--make-index-alist)
-  (let ((name-and-pos '())
-        (symbol-names '()))
-    (flet ((addsymbols (symbol-list)
-                       (when (listp symbol-list)
-                         (dolist (symbol symbol-list)
-                           (let ((name nil) (position nil))
-                             (cond
-                              ((and (listp symbol) (imenu--subalist-p symbol))
-                               (addsymbols symbol))
-                              
-                              ((listp symbol)
-                               (setq name (car symbol))
-                               (setq position (cdr symbol)))
-                              
-                              ((stringp symbol)
-                               (setq name symbol)
-                               (setq position (get-text-property 1 'org-imenu-marker symbol))))
-                             
-                             (unless (or (null position) (null name))
-                               (add-to-list 'symbol-names name)
-                               (add-to-list 'name-and-pos (cons name position))))))))
-      (addsymbols imenu--index-alist))
-    (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
-           (position (cdr (assoc selected-symbol name-and-pos))))
-      (goto-char position))))
-(global-set-key (kbd "C-x j") 'ido-imenu)
 
 ;; Utility functions for common stuff.
 
@@ -178,12 +142,12 @@
   "Run untabify on the whole buffer."
   (interactive)
   (untabify (point-min) (point-max)))
- 
+
 (defun indent-buffer ()
   "Run indent-region on the whole buffer."
   (interactive)
   (indent-region (point-min) (point-max)))
- 
+
 (defun revert-buffer-without-confirm ()
   "Call revert-buffer without confirming the revert."
   (interactive)
