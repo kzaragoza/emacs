@@ -37,6 +37,7 @@
        'rspec-mode
        'ruby-compilation
        'rvm
+       'undo-tree
        'yasnippet
        ))
 
