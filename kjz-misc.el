@@ -84,7 +84,7 @@
 
 ;; Load imenu. I use this for jumping around source files.
 (require 'imenu)
-(global-set-key (kbd "C-x j") 'imenu)
+(global-set-key (kbd "C-x j") 'helm-imenu)
 
 ;; Set up access to the MySQL command line interface.
 (setq sql-mysql-program "/usr/local/bin/mysql")
