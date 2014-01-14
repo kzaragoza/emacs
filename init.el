@@ -1,7 +1,7 @@
 ;;; This is my .emacs file
 (message "Loading .emacs...")
 
-(add-to-list 'load-path "~/.emacs.d/" 't)
+(add-to-list 'load-path "~/.emacs.d/lisp" 't)
 
 ;; Move the customizations to a separate file.
 (setq custom-file "~/.emacs.d/custom.el")
