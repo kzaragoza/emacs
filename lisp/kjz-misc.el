@@ -107,6 +107,7 @@
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "M-p") 'helm-ls-git-ls)
 (global-set-key (kbd "C-x M-f") 'helm-do-grep)
+(setq helm-ff-auto-update-initial-value t)
 (helm-mode 1)
 
 ;; Go ahead and delete text if you start typing while the region is enabled.
