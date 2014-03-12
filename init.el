@@ -65,7 +65,7 @@
 (load "kjz-javascript.el")
 (load "kjz-ruby.el")
 ;; Load any machine-specific definitions.
-(if (file-exists-p (concat user-emacs-directory "kjz-local.el"))
+(if (file-exists-p (concat user-emacs-directory "lisp/kjz-local.el"))
     (load "kjz-local.el"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
