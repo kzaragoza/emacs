@@ -45,3 +45,11 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+(defun retag ()
+  (interactive)
+  (let* ((command "(cd /Users/kris.zaragoza/Projects/sermo; ctags --tag-relative -R -e --exclude=.git)") 
+         (command-buffer-name "*Retag Output*"))
+    (start-process-shell-command "retag" command-buffer-name command)
+    (pop-to-buffer command-buffer-name)))
+
+(require 'kjz-psql)
