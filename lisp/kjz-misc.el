@@ -155,3 +155,12 @@
   (interactive)
   (revert-buffer nil t)
   (message "Reloaded."))
+
+;; Inspired by
+;; http://stackoverflow.com/questions/3669511/the-function-to-show-current-files-full-path-in-mini-buffer.
+(defun copy-file-name ()
+  "Show the full path file name in the minibuffer and copy it to
+the kill ring."
+  (interactive)
+  (message (buffer-file-name))
+  (kill-new (file-truename buffer-file-name)))
