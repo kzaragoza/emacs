@@ -52,4 +52,5 @@
     (start-process-shell-command "retag" command-buffer-name command)
     (pop-to-buffer command-buffer-name)))
 
-(require 'kjz-psql)
+;; Load custom utility functions for running psql against various environments.
+(load "kjz-psql.el")

@@ -64,9 +64,10 @@
 (load "kjz-lisp.el")
 (load "kjz-javascript.el")
 (load "kjz-ruby.el")
+
 ;; Load any machine-specific definitions.
-(if (file-exists-p (concat user-emacs-directory "lisp/kjz-local.el"))
-    (load "kjz-local.el"))
+(when (string-prefix-p "BOSMAC" system-name)
+  (load "kjz-work.el"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Start the Emacs server so I can use emacsclient from the command line.
