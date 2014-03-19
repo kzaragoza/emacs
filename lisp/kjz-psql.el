@@ -1,3 +1,5 @@
+(require 'sql)
+
 ;; Set up PostgreSQL as the default product.
 (setq sql-mode-hook
       (list
