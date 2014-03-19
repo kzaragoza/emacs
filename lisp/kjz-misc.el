@@ -162,5 +162,6 @@
   "Show the full path file name in the minibuffer and copy it to
 the kill ring."
   (interactive)
-  (message (buffer-file-name))
-  (kill-new (file-truename buffer-file-name)))
+  (when buffer-file-name
+    (message (buffer-file-name))
+    (kill-new (file-truename buffer-file-name))))
