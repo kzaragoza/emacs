@@ -66,7 +66,7 @@
 (load "kjz-ruby.el")
 
 ;; Load any machine-specific definitions.
-(when (string-prefix-p "BOSMAC" system-name)
+(when (string-prefix-p "bosmac" (downcase system-name))
   (load "kjz-work.el"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
