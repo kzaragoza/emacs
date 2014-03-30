@@ -45,12 +45,20 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;; Set up TAGS files and related functionality.
+
 (defun retag ()
   (interactive)
   (let* ((command "(cd /Users/kris.zaragoza/Projects/sermo; ctags --tag-relative -R -e --exclude=.git)") 
          (command-buffer-name "*Retag Output*"))
     (start-process-shell-command "retag" command-buffer-name command)
     (pop-to-buffer command-buffer-name)))
+
+; Auto-revert TAGS files without asking.
+(setq tags-revert-without-query t)
+
+; Bump the threshold warning of large files. The TAGS file can get big.
+(setq large-file-warning-threshold 30000000) ; 30 MB
 
 ;; Load custom utility functions for running psql against various environments.
 (load "kjz-psql.el")
