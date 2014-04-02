@@ -60,5 +60,9 @@
 ; Bump the threshold warning of large files. The TAGS file can get big.
 (setq large-file-warning-threshold 30000000) ; 30 MB
 
+; Search up the directory tree to find a TAGS table.
+(require 'etags-table)
+(setq etags-table-search-up-depth 10)
+
 ;; Load custom utility functions for running psql against various environments.
 (load "kjz-psql.el")

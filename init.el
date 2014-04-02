@@ -18,6 +18,7 @@
 (setq *required-packages*
       (list
        'csharp-mode
+       'etags-table
        'exec-path-from-shell
        'expand-region
        'find-file-in-project
