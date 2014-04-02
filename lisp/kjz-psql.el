@@ -84,4 +84,4 @@ and customizing shell-prompt-pattern.
 (make-psql "owl" "async.sermo.owl" "dball" "suds_owl")
 (make-psql "ape" "async.sermo.ape" "dball" "suds_ape")
 (make-psql "bee" "async.sermo.bee" "dball" "suds_bee")
-
+(make-psql "eel" "async.sermo.eel" "dball" "suds_eel")
