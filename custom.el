@@ -25,6 +25,7 @@
  '(show-paren-style (quote mixed))
  '(speedbar-frame-parameters (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0))))
  '(speedbar-show-unknown-files t)
+ '(split-width-threshold 200)
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
  '(tool-bar-mode nil)
  '(transient-mark-mode t))
