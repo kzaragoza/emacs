@@ -85,3 +85,10 @@ and customizing shell-prompt-pattern.
 (make-psql "ape" "async.sermo.ape" "dball" "suds_ape")
 (make-psql "bee" "async.sermo.bee" "dball" "suds_bee")
 (make-psql "eel" "async.sermo.eel" "dball" "suds_eel")
+
+
+(defun foobuf ()
+  "Create a scratch buffer to be used with one of the psql-* commands defined above."
+  (interactive)
+  (pop-to-buffer (generate-new-buffer "foo"))
+  (sql-mode))
