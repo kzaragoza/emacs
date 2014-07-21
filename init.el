@@ -23,6 +23,7 @@
        'expand-region
        'find-file-in-project
        'findr
+       'go-mode
        'helm
        'helm-ls-git
        'inf-ruby
@@ -65,6 +66,7 @@
 (load "kjz-lisp.el")
 (load "kjz-javascript.el")
 (load "kjz-ruby.el")
+(load "kjz-go.el")
 
 ;; Load any machine-specific definitions.
 (when (string-prefix-p "bosmac" (downcase system-name))
