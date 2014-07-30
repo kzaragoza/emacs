@@ -91,6 +91,9 @@
 (global-set-key (kbd "\C-ca") 'org-agenda)
 (setq org-log-done t)
 (setq org-agenda-files (list "~/TODO.org"))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t))) ; this line activates dot
 
 ;; Set up utility for finding files within a project.
 ; This lets us scope our searches to the app subdirectories in the Sermo codebase.
