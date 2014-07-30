@@ -1,3 +1,4 @@
+(require 'go-mode)
 (add-hook 'go-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-k") 'godoc)
@@ -7,4 +8,4 @@
              (local-set-key (kbd "C-c C-k") 'godoc)))
 
 
-(add-hook 'before-save-hook 'go-fmt-before-save)
+(add-hook 'before-save-hook 'gofmt-before-save)
