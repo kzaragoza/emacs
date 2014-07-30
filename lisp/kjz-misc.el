@@ -85,9 +85,6 @@
 ;; Load imenu. I use this for jumping around source files.
 (require 'imenu)
 
-;; Set up access to the MySQL command line interface.
-(setq sql-mysql-program "/usr/local/bin/mysql")
-
 ;; Set up org mode for tracking TODOs and such.
 (require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
