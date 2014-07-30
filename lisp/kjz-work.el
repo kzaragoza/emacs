@@ -2,6 +2,9 @@
 ;;; Local settings for my work machine.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(eval-after-load "sql"
+  '(load-library "sql-indent"))
+
 ;; Set up some groups for ibuffer to make finding things easier.
 (setq ibuffer-saved-filter-groups
       '(("default"

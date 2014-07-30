@@ -39,6 +39,7 @@
        'rspec-mode
        'ruby-compilation
        'rvm
+       'sql-indent
        'undo-tree
        'yasnippet
        ))
