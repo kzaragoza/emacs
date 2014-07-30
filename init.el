@@ -59,6 +59,7 @@
 ;; Custom code and utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "kjz-misc.el")
+(load "kjz-helm.el")
 (load "kjz-flex.el")
 (load "kjz-python.el")
 (load "kjz-text.el")

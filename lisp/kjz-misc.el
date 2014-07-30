@@ -84,7 +84,6 @@
 
 ;; Load imenu. I use this for jumping around source files.
 (require 'imenu)
-(global-set-key (kbd "C-x j") 'helm-imenu)
 
 ;; Set up access to the MySQL command line interface.
 (setq sql-mysql-program "/usr/local/bin/mysql")
@@ -100,15 +99,6 @@
 ; This lets us scope our searches to the app subdirectories in the Sermo codebase.
 ;(global-set-key (kbd "M-p") 'find-file-in-project)
 (global-set-key (kbd "C-x t") 'find-file-in-project)
-
-;; Set up helm
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "M-p") 'helm-ls-git-ls)
-(global-set-key (kbd "C-x M-f") 'helm-do-grep)
-(setq helm-ff-auto-update-initial-value t)
-(helm-mode 1)
 
 ;; Go ahead and delete text if you start typing while the region is enabled.
 (delete-selection-mode t)
