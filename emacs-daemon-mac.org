@@ -1,0 +1,131 @@
+* Overview
+The basic idea is to launch Emacs as a daemon as soon as you log in. This can be
+done using launchd, which ensures startup and allows some nice control over the
+command line arguments passed to Emacs.
+
+* Launch Emacs Daemon
+To set up the Emacs Daemon, create a configuration file for launchd in
+~/Library/LaunchAgents called, for example, gnu.emacs.daemon.plist. The
+particular name doesn't matter. Just name it something appropriate so you can
+easily remember it.
+
+Put the following XML into that file:
+
+#+begin_src xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd"> 
+<plist version="1.0">
+  <dict> 
+    <key>Label</key>
+    <string>gnu.emacs.daemon</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Applications/Emacs.app/Contents/MacOS/Emacs</string>
+      <string>--daemon</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>ServiceDescription</key>
+    <string>Gnu Emacs Daemon</string>
+    <key>UserName</key>
+    <string>kris.zaragoza</string>
+    <key>LSUIElement</key>
+    <string>1</string>
+    <key>KeepAlive</key>
+    <true/>
+  </dict>
+</plist>
+#+end_src
+
+Update the XML above to reflect the path to your Emacs.app installation. You
+can add any appropriate additional command line arguments as additional
+<string> elements after <string>--daemon</string>.
+
+Once you've set up your launchd configuration file, load it as follows. If no
+errors are reported, you should now see Emacs on the process list. It will be
+loaded as such automatically with every login.
+
+#+BEGIN_EXAMPLE
+
+$ launchctl load ~/Library/LaunchAgents/gnu.emacs.daemon.plist
+
+#+END_EXAMPLE
+
+* Command line setup
+
+Once the daemon is running, you need only use emacsclient to launch new frames
+and load files. On my system, I access it three different ways.
+
+** The emacsclient executable
+
+You can use emacsclient as usual, with all the command line arguments it
+supports. Since the daemon is already running, emacsclient will happily fire up
+a new frame or use an existing one if given the right command line
+arguments. Given how many options are available, I have a couple of other
+mechanisms set up as well.
+
+** The EDITOR environment variable
+
+I've set up my EDITOR environment variable to be "emacsclient --tty". This will
+cause a new Emacs frame to be opened in the TTY in which I invoked a command
+that uses $EDITOR. Most often, this gets used when I commit changes through git
+on the command line. An Emacs frame opens up, I type my commit message, and
+press either C-x # or C-x C-c after saving to close the frame and end the
+editing session. Since "-n" is not being passed to emacsclient, it will wait
+until editing is complete before terminating and returning control to the
+calling program.
+
+** The e shell alias
+
+In order to make my life easier, I also have a function defined in my .bashrc
+to run emacsclient. I tweak the default command line parameters from time to
+time, but it is essentially a single-letter form to call emacsclient and edit a
+file. I often have it defined as follows:
+
+#+begin_src bash
+function e {
+    emacsclient -n -c $@
+}
+#+end_src
+
+This creates a new frame (-c), and tells emacsclient to not bother waiting for
+the editing session to end (-n). It's fire-and-forget from the command line,
+and I end up with a new Emacs frame ready to edit the given file. You can tweak
+this as appropriate for your needs, such as reusing existing frames.
+
+* GUI setup
+
+Life on a Mac isn't complete without using the GUI. In order to quickly open up
+a frame or drag and drop a file to edit, I created an "application" out of
+emacsclient. In essence, it's an Automator wrapper around a shell script.
+
+To create this, start up Automator and create a new application that runs the
+following shell script.
+
+#+begin_src bash
+EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+EMACSCLIENT=/usr/local/bin/emacsclient
+
+if [ -z $(pgrep Emacs) ]; then
+	# Start the daemon.
+	$EMACS --daemon;
+fi
+
+# Open an Emacs window
+$EMACSCLIENT -nc $@
+
+osascript -e 'tell application "Emacs" to activate'
+#+end_src
+
+Save this as an application called EmacsClient.app (or something else similar)
+and drop it on your Dock. I saved mine in ~/Applications. 
+
+If you'd like to change the icon, you can crack open the package and replace the
+Contents/Resources/AutomatorApplet.icns file with another icon file. I just
+stole the one out of Emacs.app. Works like a charm.
+
+* Conclusion
+
+That's all there is to it. A little work for a lot of convenience gained. Let
+me know if you have any trouble.
