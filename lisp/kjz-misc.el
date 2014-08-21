@@ -32,6 +32,9 @@
 (require 'windmove)
 (windmove-default-keybindings 'meta)
 
+;; Set up ace-window
+(global-set-key (kbd "C-x o") 'ace-window)
+
 ;; Tell Emacs not to disable narrow functionality.
 (put 'narrow-to-region 'disabled nil)
 

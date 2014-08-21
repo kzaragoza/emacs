@@ -17,6 +17,7 @@
 
 (setq *required-packages*
       (list
+       'ace-window
        'csharp-mode
        'etags-table
        'exec-path-from-shell
