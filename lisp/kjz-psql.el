@@ -29,47 +29,40 @@ and customizing shell-prompt-pattern.
   (let ((product 'postgres)
         (sql-user "sermo")
         (sql-server server)
-        (sql-database database)
-        (new-name nil))
+        (sql-database database))
     ;; Largely lifted from sql-product-interactive in sql.el
-    
-    (let ((buf (sql-find-sqli-buffer product sql-connection))
-          (default-directory (format "/ssh:%s:" relay-host)))
-      (if (and (not new-name) buf)
-          (pop-to-buffer buf)
+    (let ((default-directory (format "/ssh:%s:" relay-host)))
+      ;; We have a new name or sql-buffer doesn't exist or match
+      ;; Start by remembering where we start
+      (let ((start-buffer (current-buffer))
+            new-sqli-buffer)
 
-        ;; We have a new name or sql-buffer doesn't exist or match
-        ;; Start by remembering where we start
-        (let ((start-buffer (current-buffer))
-              new-sqli-buffer)
+        ;; Connect to database, bouncing through the relay host, if provided.
+        (message "Login...")
+        (funcall (sql-get-product-feature product :sqli-comint-func)
+                 product
+                 (sql-get-product-feature product :sqli-options))
 
-          ;; Connect to database, bouncing through the relay host, if provided.
-          (message "Login...")
-          (funcall (sql-get-product-feature product :sqli-comint-func)
-                   product
-                   (sql-get-product-feature product :sqli-options))
+        ;; Set SQLi mode.
+        (let ((sql-interactive-product product))
+          (sql-interactive-mode))
 
-          ;; Set SQLi mode.
-          (let ((sql-interactive-product product))
-            (sql-interactive-mode))
+        ;; Set the new buffer name
+        (setq new-sqli-buffer (current-buffer))
+        (set (make-local-variable 'sql-buffer)
+             (buffer-name new-sqli-buffer))
 
-          ;; Set the new buffer name
-          (setq new-sqli-buffer (current-buffer))
-          (when new-name
-            (sql-rename-buffer new-name))
-          (set (make-local-variable 'sql-buffer)
-               (buffer-name new-sqli-buffer))
+        ;; Set `sql-buffer' in the start buffer
+        (with-current-buffer start-buffer
+          (when (derived-mode-p 'sql-mode)
+            (setq sql-buffer (buffer-name new-sqli-buffer))
+            (run-hooks 'sql-set-sqli-hook)
+            (tramp-cleanup-this-connection)))
 
-          ;; Set `sql-buffer' in the start buffer
-          (with-current-buffer start-buffer
-            (when (derived-mode-p 'sql-mode)
-              (setq sql-buffer (buffer-name new-sqli-buffer))
-              (run-hooks 'sql-set-sqli-hook)))
-
-          ;; All done.
-          (message "Login...done")
-          (run-hooks 'sql-login-hook)
-          (pop-to-buffer new-sqli-buffer))))))
+        ;; All done.
+        (message "Login...done")
+        (run-hooks 'sql-login-hook)
+        (pop-to-buffer new-sqli-buffer)))))
 
 
 (defmacro make-psql (fleet host db-server database)
