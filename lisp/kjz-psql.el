@@ -78,6 +78,7 @@ and customizing shell-prompt-pattern.
 (make-psql "ape" "async.sermo.ape" "dball" "suds_ape")
 (make-psql "bee" "async.sermo.bee" "dball" "suds_bee")
 (make-psql "eel" "async.sermo.eel" "dball" "suds_eel")
+(make-psql "eeldw" "async.sermo.eel" "dw" "telemetry_eel")
 
 
 (defun foobuf ()
