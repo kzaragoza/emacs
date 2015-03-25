@@ -48,6 +48,11 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+;; Copy that environment into eshell when it starts up.
+(add-hook 'eshell-load-hook
+          (lambda ()
+            (exec-path-from-shell-copy-envs '("rvm_bin_path" "GEM_HOME" "GEM_PATH" "IRBRC" "MY_RUBY_HOME" "rvm_path" "rvm_prefix" "rvm_version" "V2_HOME" "SERMO_SETTINGS_PATH" "LOCALHOST_LOCALDOMAIN" "DEV_ASSET_HOST" "BUILD_TARGET" "WORKING_COPY" "ENABLE_JASMINE" "EMAIL_OVERRIDE" "PASSENGER_VERSION"))))
+
 ;; Set up TAGS files and related functionality.
 
 (defun retag ()
