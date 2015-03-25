@@ -72,14 +72,14 @@ and customizing shell-prompt-pattern.
        (interactive)
        (sermo-psql ,db-server ,database ,host ))))
 
-(make-psql "prod" "async.sermo.prod" "dball" "suds_production")
-(make-psql "dw" "async.sermo.prod" "dw" "telemetry_production")
+(make-psql "prod" "tools.sermo.prod" "dball" "suds_production")
+(make-psql "dw" "tools.sermo.prod" "dw" "telemetry_production")
 (make-psql "owl" "async.sermo.owl" "dball" "suds_owl")
 (make-psql "ape" "async.sermo.ape" "dball" "suds_ape")
 (make-psql "bee" "async.sermo.bee" "dball" "suds_bee")
 (make-psql "eel" "async.sermo.eel" "dball" "suds_eel")
 (make-psql "eeldw" "async.sermo.eel" "dw" "telemetry_eel")
-
+(make-psql "hog" "async.sermo.hog" "dball" "suds_hog")
 
 (defun foobuf ()
   "Create a scratch buffer to be used with one of the psql-* commands defined above."
