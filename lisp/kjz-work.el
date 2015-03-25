@@ -55,11 +55,19 @@
 
 ;; Set up TAGS files and related functionality.
 
-(defun retag ()
+(defun kjz-retag-local ()
   (interactive)
   (let* ((command "(cd /Users/kris.zaragoza/Projects/sermo; ctags --tag-relative -R -e --exclude=.git)") 
          (command-buffer-name "*Retag Output*"))
     (start-process-shell-command "retag" command-buffer-name command)
+    (pop-to-buffer command-buffer-name)))
+
+(defun kjz-retag-vagrant ()
+  (interactive)
+  (let* ((default-directory "/ssh:default:/home/vagrant/src/sermo/")
+         (command "ctags --tag-relative -R -e -f /home/vagrant/src/sermo/TAGS --exclude=.git --exclude=.rvm")
+         (command-buffer-name "*Retag Output*"))
+    (start-file-process "retag" (get-buffer-create command-buffer-name) "ctags" "--tag-relative" "-R" "-e" "-f" "/home/vagrant/src/sermo/TAGS" "--exclude=.git" "--exclude=.rvm")
     (pop-to-buffer command-buffer-name)))
 
 ; Auto-revert TAGS files without asking.
