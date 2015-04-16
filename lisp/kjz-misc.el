@@ -115,6 +115,7 @@
 
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
 (global-set-key (kbd "C-x g") 'magit-status)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; Bind keys for multiple-cursors mode.
 (global-set-key (kbd "M-[") 'mc/mark-previous-like-this)
