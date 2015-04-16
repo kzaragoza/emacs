@@ -6,6 +6,29 @@
        (lambda ()
          (sql-set-product 'postgres))))
 
+(defun sermo-prep-relay (relay-host)
+  (let ((file-path (concat "/scp:" relay-host ":~/.bashrc"))
+        (pattern "if [ $TERM = dumb ]; then")
+        (block "if [ $TERM = dumb ]; then
+	PS1=\"[\\u@\\H \\w] \"
+fi
+"))
+    (find-file file-path)
+    (goto-char (point-min))
+    (unless (search-forward pattern nil t)
+      (goto-char (point-max))
+      (insert-string block)
+      (save-buffer)
+      (kill-buffer))))
+
+(defun sermo-prep-all-relays ()
+  (mapc 'sermo-prep-relay '("tools.sermo.prod"
+                           "tools.sermo.owl"
+                           "tools.sermo.hog"
+                           "tools.sermo.eel"
+                           "tools.sermo.ape"
+                           "tools.sermo.bee")))
+
 (defun sermo-psql (server database relay-host)
   "Set up a psql session to one of the fleet database
 servers. This presumes that the relay host already has a .pg_pass
