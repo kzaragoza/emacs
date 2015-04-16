@@ -427,7 +427,7 @@
  '(custom-file "~/.emacs.d/custom.el")
  '(custom-safe-themes
    (quote
-    ("ee6081af57dd389d9c94be45d49cf75d7d737c4a78970325165c7d8cb6eb9e34" default)))
+    ("442c946bc5c40902e11b0a56bd12edc4d00d7e1c982233545979968e02deb2bc" "ee6081af57dd389d9c94be45d49cf75d7d737c4a78970325165c7d8cb6eb9e34" default)))
  '(default-frame-alist
     (quote
      ((foreground-color . "white")
@@ -473,7 +473,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Consolas"))))
  '(mode-line ((t (:background "#d3f9ee" :foreground "#081724" :inverse-video nil :box (:line-width 1 :color "#d3f9ee")))))
- '(mode-line-inactive ((t (:inherit mode-line :background "#1d5483" :foreground "#081724" :inverse-video nil :box (:line-width 1 :color "#1d5483") :weight light)))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "#1d5483" :foreground "#081724" :inverse-video nil :box (:line-width 1 :color "#1d5483") :weight light))))
+ '(powerline-active1 ((t (:inherit mode-line :background "grey22" :foreground "gray100")))))
 
 ;; for compatibility with older Aquamacs versions
  (defvar aquamacs-140-custom-file-upgraded t)

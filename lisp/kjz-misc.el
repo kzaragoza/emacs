@@ -73,6 +73,10 @@
 ;; Set up just the rectangle stuff from CUA mode.
 (cua-selection-mode 1)
 
+;; Turn on Powerline.
+(require 'powerline)
+(powerline-default-theme)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
