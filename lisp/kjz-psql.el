@@ -16,7 +16,7 @@ Note, this doesn't work well with the shell prompts we have set
 up in the various environments. In order for our systems to play
 nice with Tramp, we need to alter the shell prompt when accessed
 through Tramp. Drop this into the .bash_profile file on each
-async box:
+tools box:
 
 if [ $TERM = dumb ]; then
 	PS1=\"[\\u@\\H \\w] \"
@@ -74,12 +74,12 @@ and customizing shell-prompt-pattern.
 
 (make-psql "prod" "tools.sermo.prod" "dball" "suds_production")
 (make-psql "dw" "tools.sermo.prod" "dw" "telemetry_production")
-(make-psql "owl" "async.sermo.owl" "dball" "suds_owl")
-(make-psql "ape" "async.sermo.ape" "dball" "suds_ape")
-(make-psql "bee" "async.sermo.bee" "dball" "suds_bee")
-(make-psql "eel" "async.sermo.eel" "dball" "suds_eel")
-(make-psql "eeldw" "async.sermo.eel" "dw" "telemetry_eel")
-(make-psql "hog" "async.sermo.hog" "dball" "suds_hog")
+(make-psql "owl" "tools.sermo.owl" "dball" "suds_owl")
+(make-psql "ape" "tools.sermo.ape" "dball" "suds_ape")
+(make-psql "bee" "tools.sermo.bee" "dball" "suds_bee")
+(make-psql "eel" "tools.sermo.eel" "dball" "suds_eel")
+(make-psql "eeldw" "tools.sermo.eel" "dw" "telemetry_eel")
+(make-psql "hog" "tools.sermo.hog" "dball" "suds_hog")
 
 (defun foobuf ()
   "Create a scratch buffer to be used with one of the psql-* commands defined above."
