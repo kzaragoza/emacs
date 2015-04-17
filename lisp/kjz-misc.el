@@ -189,3 +189,13 @@ the kill ring."
 	  (set-window-buffer (next-window) next-win-buffer)
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
+
+(defun kjz-org-export-rich-text ()
+  "Quick utility script to export Org data to RTF to paste into other applications."
+  (interactive)
+  (org-html-export-as-html)
+  (shell-command-on-region
+   (point-min)
+   (point-max)
+   "pandoc -f html -t rtf --standalone | pbcopy")
+  (kill-buffer))
