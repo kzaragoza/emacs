@@ -190,12 +190,8 @@ the kill ring."
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
 
-(defun kjz-org-export-rich-text ()
+(defun kjz-org-export-rich-text (p1 p2)
   "Quick utility script to export Org data to RTF to paste into other applications."
-  (interactive)
-  (org-html-export-as-html)
-  (shell-command-on-region
-   (point-min)
-   (point-max)
-   "pandoc -f html -t rtf --standalone | pbcopy")
-  (kill-buffer))
+  (interactive "r")
+  (message "Region is %d to %d" p1 p2)
+  (shell-command-on-region p1 p2 "pandoc -f org -t rtf --standalone | pbcopy"))
