@@ -1,4 +1,6 @@
 (require 'sql)
+;; Set the default proxy-buffer to nil.
+(setq proxy-buffer nil)
 
 ;; Set up PostgreSQL as the default product.
 (setq sql-mode-hook
@@ -6,106 +8,83 @@
        (lambda ()
          (sql-set-product 'postgres))))
 
-(defun sermo-prep-relay (relay-host)
-  (let ((file-path (concat "/scp:" relay-host ":~/.bashrc"))
-        (pattern "if [ $TERM = dumb ]; then")
-        (block "if [ $TERM = dumb ]; then
-	PS1=\"[\\u@\\H \\w] \"
-fi
-"))
-    (find-file file-path)
-    (goto-char (point-min))
-    (unless (search-forward pattern nil t)
-      (goto-char (point-max))
-      (insert-string block)
-      (save-buffer)
-      (kill-buffer))))
-
-(defun sermo-prep-all-relays ()
-  (mapc 'sermo-prep-relay '("tools.sermo.prod"
-                           "tools.sermo.owl"
-                           "tools.sermo.hog"
-                           "tools.sermo.eel"
-                           "tools.sermo.ape"
-                           "tools.sermo.bee")))
-
-(defun sermo-psql (server database relay-host)
-  "Set up a psql session to one of the fleet database
-servers. This presumes that the relay host already has a .pg_pass
-file set up for the user's account (as they all should). This
-also always logs into the DB server as the user sermo.
-
-Note, this doesn't work well with the shell prompts we have set
-up in the various environments. In order for our systems to play
-nice with Tramp, we need to alter the shell prompt when accessed
-through Tramp. Drop this into the .bash_profile file on each
-tools box:
-
-if [ $TERM = dumb ]; then
-	PS1=\"[\\u@\\H \\w] \"
-fi
-
-That will alter the prompt to something that Tramp will parse
-correctly without having to delve into strange regexp black magic
-and customizing shell-prompt-pattern.
-"
-  (let ((product 'postgres)
-        (sql-user "sermo")
-        (sql-server server)
-        (sql-database database))
-    ;; Largely lifted from sql-product-interactive in sql.el
-    (let ((default-directory (format "/ssh:%s:" relay-host)))
-      ;; We have a new name or sql-buffer doesn't exist or match
-      ;; Start by remembering where we start
-      (let ((start-buffer (current-buffer))
-            new-sqli-buffer)
-
-        ;; Connect to database, bouncing through the relay host, if provided.
-        (message "Login...")
-        (funcall (sql-get-product-feature product :sqli-comint-func)
-                 product
-                 (sql-get-product-feature product :sqli-options))
-
-        ;; Set SQLi mode.
-        (let ((sql-interactive-product product))
-          (sql-interactive-mode))
-
-        ;; Set the new buffer name
-        (setq new-sqli-buffer (current-buffer))
-        (set (make-local-variable 'sql-buffer)
-             (buffer-name new-sqli-buffer))
-
-        ;; Set `sql-buffer' in the start buffer
-        (with-current-buffer start-buffer
-          (when (derived-mode-p 'sql-mode)
-            (setq sql-buffer (buffer-name new-sqli-buffer))
-            (run-hooks 'sql-set-sqli-hook)
-            (tramp-cleanup-this-connection)))
-
-        ;; All done.
-        (message "Login...done")
-        (run-hooks 'sql-login-hook)
-        (pop-to-buffer new-sqli-buffer)))))
-
-
-(defmacro make-psql (fleet host db-server database)
-  "Macro to generate a psql-[fleet] command."
-  (let ((funsymbol (intern (format "psql-%s" fleet))))
-    `(defun ,funsymbol ()
-       (interactive)
-       (sermo-psql ,db-server ,database ,host ))))
-
-(make-psql "prod" "tools.sermo.prod" "dball" "suds_production")
-(make-psql "dw" "tools.sermo.prod" "dw" "telemetry_production")
-(make-psql "owl" "tools.sermo.owl" "dball" "suds_owl")
-(make-psql "ape" "tools.sermo.ape" "dball" "suds_ape")
-(make-psql "bee" "tools.sermo.bee" "dball" "suds_bee")
-(make-psql "eel" "tools.sermo.eel" "dball" "suds_eel")
-(make-psql "eeldw" "tools.sermo.eel" "dw" "telemetry_eel")
-(make-psql "hog" "tools.sermo.hog" "dball" "suds_hog")
-
 (defun foobuf ()
   "Create a scratch buffer to be used with one of the psql-* commands defined above."
   (interactive)
   (pop-to-buffer (generate-new-buffer "foo"))
   (sql-mode))
+
+(defun kjz-create-psql-buffer (bufname)
+  "Create a scratch buffer to be used with one of the psql-* commands."
+  (let ((buf (generate-new-buffer (format "*SQL Scratch %s*" bufname))))
+    (with-current-buffer buf
+      (sql-mode)
+      (add-hook 'kill-buffer-hook
+                (lambda ()
+                  ;; Kill the psql buffer.
+                  (if (get-buffer sql-buffer)
+                      (with-current-buffer sql-buffer
+                        (let ((kill-buffer-query-functions nil)) ; Suppress kill confirmation prompts.
+                          (comint-send-eof)
+                          (kill-buffer)))))
+                nil
+                t))
+    buf))
+
+(defun kjz-setup-proxy (relay-host local-port db-host db-port)
+  (let ((proxy-arg (format "%d:%s:%d" local-port db-host db-port))
+        (new-buffer-name (generate-new-buffer-name (format "*Proxy %s*" db-host))))
+    (start-process "proxy" new-buffer-name "/usr/bin/ssh" "-L" proxy-arg relay-host)
+    (with-current-buffer new-buffer-name
+      (comint-mode)
+      ; Now that everything is kicked off, wait for the prompt to show up.
+      (unless (string-match "\\] \\$?" (buffer-string))
+        (sleep-for 1)))
+    (get-buffer new-buffer-name)))
+
+(defun kjz-psql-connect (relay-host local-port db-host db-port db-name db-user)
+  (let* ((sql-connection-alist '((my-db (sql-product 'postgres)
+                                        (sql-port local-port)
+                                        (sql-server "localhost")
+                                        (sql-user db-user)
+                                        (sql-database db-name))))
+         (proc-buffer (kjz-setup-proxy relay-host local-port db-host db-port)))
+    (sql-connect 'my-db)
+    (make-local-variable 'proxy-buffer)
+    (setq proxy-buffer proc-buffer)
+    (add-hook 'kill-buffer-hook
+              (lambda ()
+                ;; Kill the proxy buffer.
+                (if (get-buffer proxy-buffer)
+                    (with-current-buffer proxy-buffer
+                      (let ((kill-buffer-query-functions nil)) ;Suppress kill confirmation prompts.
+                        (comint-send-eof)
+                        (kill-buffer)))))
+              nil
+              t)))
+
+(defmacro kjz-make-psql (name relay-host local-port db-host db-port db-name db-user)
+  "Macro to generate a psql-[fleet] command."
+  (let ((funsymbol (intern (format "psql-%s" name)))
+        (docstring (format "Connects to %s on %s through a port forwarded by SSH.
+
+Since Emacs uses psql under the covers, the password for
+the connection will be taken from the .pgpass file in your
+home directory. Make sure this is up to date for each of
+the established forwarded ports." db-name db-host)))
+    `(defun ,funsymbol ()
+       ,docstring
+       (interactive)
+       (let ((buf (kjz-create-psql-buffer ,db-host)))
+         (switch-to-buffer buf)
+         (kjz-psql-connect ,relay-host ,local-port ,db-host ,db-port ,db-name ,db-user)
+         (other-window -1)))))
+
+(kjz-make-psql "owl" "tools.sermo.owl" 54321 "dball.sermo.owl" 5432 "suds_owl" "sermo")
+(kjz-make-psql "ape" "tools.sermo.ape" 54322 "dball.sermo.ape" 5432 "suds_ape" "sermo")
+(kjz-make-psql "bee" "tools.sermo.bee" 54323 "dball.sermo.bee" 5432 "suds_bee" "sermo")
+(kjz-make-psql "eel" "tools.sermo.eel" 54324 "dball.sermo.eel" 5432 "suds_eel" "sermo")
+(kjz-make-psql "eeldw" "tools.sermo.eel" 54325 "dw.sermo.eel" 5432 "telemetry_eel" "sermo")
+(kjz-make-psql "prod" "tools.sermo.prod" 54326 "dball.sermo.prod" 5432 "suds_production" "sermo")
+(kjz-make-psql "proddw" "tools.sermo.prod" 54327 "dw.sermo.prod" 5432 "telemetry_production" "sermo")
+
