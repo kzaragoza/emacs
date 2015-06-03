@@ -33,3 +33,5 @@
       (remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
 
 
+;; Have Emacs recognize a single space as a sentence end.
+(setq sentence-end-double-space nil)
