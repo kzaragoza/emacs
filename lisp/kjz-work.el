@@ -14,8 +14,8 @@
                    (name . "^\\*Messages\\*$")
                    (name . "^\\*Help\\*$")
                    (name . "^\\*info\\*$")
-                   (name . "^\\*Completions\\*$")))
-         ("Sermo" (filename . "/Users/kris.zaragoza/Projects/sermo")))))
+                   (name . "^\\*Completions\\*$"))))))
+
 (add-hook 'ibuffer-mode-hook
           (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
 
