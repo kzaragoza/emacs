@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: org-comment
+# key: comment
+# binding: direct-keybinding
+# --
+#+BEGIN_COMMENT
+$0
+#+END_COMMENT

@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: org-quote
+# key: quote
+# binding: direct-keybinding
+# --
+#+BEGIN_QUOTE
+$0
+#+END_QUOTE
