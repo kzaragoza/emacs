@@ -5,7 +5,15 @@
 (setq org-log-done t)
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((dot . t))) ; this line activates dot
+ '((emacs-lisp . t)
+   (dot . t)
+   (python . t)
+   (R . t)
+   (sql . t)
+   (sh . t)
+   (ruby . t)
+   (perl . t)
+   (ditaa . t)))
 
 (defun kjz-org-export-rich-text ()
   "Quick utility script to export Org data to HTML on the
