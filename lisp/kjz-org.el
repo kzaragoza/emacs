@@ -3,7 +3,6 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key (kbd "\C-ca") 'org-agenda)
 (setq org-log-done t)
-(setq org-agenda-files (list "~/Dropbox/OrgFiles/todo.org" "~/Dropbox/OrgFiles/sermo.org"))
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((dot . t))) ; this line activates dot

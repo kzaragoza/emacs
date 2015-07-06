@@ -25,6 +25,7 @@
  '(ns-command-modifier (quote meta))
  '(ns-pop-up-frames nil)
  '(ns-use-srgb-colorspace nil)
+ '(org-agenda-files (quote ("~/Dropbox/OrgFiles/sermo.org")))
  '(save-abbrevs nil)
  '(sgml-basic-offset 4)
  '(show-paren-style (quote mixed))
