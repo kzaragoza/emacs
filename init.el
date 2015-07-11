@@ -36,6 +36,7 @@
        'markdown-mode
        'mmm-mode
        'multiple-cursors
+       'powerline
        'rinari
        'rspec-mode
        'ruby-compilation
