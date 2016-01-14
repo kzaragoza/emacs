@@ -144,15 +144,16 @@
   (revert-buffer nil t)
   (message "Reloaded."))
 
-;; Inspired by
-;; http://stackoverflow.com/questions/3669511/the-function-to-show-current-files-full-path-in-mini-buffer.
+;; Copy the current buffer full path to the clipboard.
 (defun copy-file-name ()
-  "Show the full path file name in the minibuffer and copy it to
-the kill ring."
+  "Copies the full path of the current buffer to the system clipboard."
   (interactive)
-  (when buffer-file-name
-    (message (buffer-file-name))
-    (kill-new (file-truename buffer-file-name))))
+  (let ((filename (or (buffer-file-name) default-directory)))
+    (when filename
+      (with-temp-buffer
+        (insert filename)
+        (clipboard-kill-region (point-min) (point-max)))
+      (message filename))))
 
 ;; Taken from http://www.emacswiki.org/emacs/ToggleWindowSplit
 (defun toggle-window-split ()
@@ -179,5 +180,4 @@ the kill ring."
 	  (set-window-buffer (next-window) next-win-buffer)
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
-
 
