@@ -57,7 +57,7 @@
 
 (defun kjz-retag-local ()
   (interactive)
-  (let* ((command "(cd /Users/kris.zaragoza/Projects/sermo; ctags --tag-relative -R -e --exclude=.git)") 
+  (let* ((command "(cd /Users/kris.zaragoza/src/sermo; ctags --tag-relative -R -e --exclude=.git)") 
          (command-buffer-name "*Retag Output*"))
     (start-process-shell-command "retag" command-buffer-name command)
     (pop-to-buffer command-buffer-name)))
