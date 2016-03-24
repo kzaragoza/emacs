@@ -181,3 +181,17 @@
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
 
+;; I do this too damned often to not have some utility commands for it.
+(defun url-escape-region (start end)
+  "URL encode the region between START and END in the current buffer."
+  (interactive "r")
+  (save-excursion
+    (let ((text (delete-and-extract-region start end)))
+      (insert (url-hexify-string text)))))
+
+(defun url-unescape-region (start end)
+  "URL decode the region between START and END in the current buffer."
+  (interactive "r")
+  (save-excursion
+    (let ((text (delete-and-extract-region start end)))
+      (insert (url-unhex-string text)))))
