@@ -88,3 +88,17 @@ the established forwarded ports." db-name db-host)))
 (kjz-make-psql "prod" "tools.sermo.prod" 54326 "dball.sermo.prod" 5432 "suds_production" "sermo")
 (kjz-make-psql "proddw" "tools.sermo.prod" 54327 "dw.sermo.prod" 5432 "telemetry_production" "sermo")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Data Warehouse
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun warehouse ()
+  (interactive)
+  (let ((buf (generate-new-buffer "*SQL Scratch warehouse"))
+        (sql-server "warehouse.sermo.prod")
+        (sql-database "warehouse_production")
+        (sql-port 5432))
+    (switch-to-buffer buf)
+    (sql-mode)
+    (sql-postgres)
+    (other-window -1)))
