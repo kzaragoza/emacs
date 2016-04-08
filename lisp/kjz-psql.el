@@ -22,7 +22,7 @@
       (add-hook 'kill-buffer-hook
                 (lambda ()
                   ;; Kill the psql buffer.
-                  (if (get-buffer sql-buffer)
+                  (if (and sql-buffer (get-buffer sql-buffer))
                       (with-current-buffer sql-buffer
                         (let ((kill-buffer-query-functions nil)) ; Suppress kill confirmation prompts.
                           (comint-send-eof)
