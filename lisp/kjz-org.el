@@ -29,7 +29,16 @@
   "Quick utility script to export Org data to HTML on the
 clipboard to paste into other applications."
   (interactive)
-  (org-html-export-as-html)
+  (let ((org-export-with-author nil)
+        (org-export-with-date nil)
+        (org-export-with-email nil)
+        (org-export-with-creator nil)
+        (org-export-with-date nil)
+        (org-html-validation-link nil)
+        (org-export-with-statistics-cookie nil)
+        (org-export-time-stamp-file nil)
+        (org-export-with-title nil))
+    (org-html-export-as-html))
   ;; Note we have to tweak the process coding system. It's set to Latin-1 by
   ;; default, which completely trashes the chevrons in the string, making the
   ;; AppleScript syntax invalid.
