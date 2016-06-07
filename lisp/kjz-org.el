@@ -6,24 +6,39 @@
 (setq org-log-done t)
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
+ '((R . nil)
+   (ditaa . t)
    (dot . t)
+   (emacs-lisp . t)
+   (js . t)
    (python . t)
-   (R . t)
-   (sql . t)
-   (sh . t)
    (ruby . t)
-   (perl . t)
-   (ditaa . t)))
+   (sh . t)
+   (sql . t)))
 
 ;; Use org-capture for quick entry of items.
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
+(setq org-work-notes-file (concat org-directory "/sermo.org"))
 (global-set-key "\C-cc" 'org-capture)
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline org-default-notes-file "Todo")
-         "* TODO %?\n  %i\n  %a")
+      '(("t" "Todo" entry (file+datetree org-work-notes-file)
+         "* TODO %?\n  %a"
+         :empty-lines 1)
         ("i" "General Item" entry (file+headline org-default-notes-file "Item")
-         "* %?\n  %i\n  %a")))
+         "* %?\n  %i\n  %a")
+        ("w" "Work Item" entry (file+datetree org-work-notes-file)
+         "* %?\n %i"
+         :empty-lines 1)))
+
+;; Set up a shortcut to quickly go to the inbox for processing and refiling.
+(global-set-key "\C-ci"
+                (lambda ()
+                  (interactive)
+                  (find-file org-default-notes-file)))
+(global-set-key "\C-cw"
+                (lambda ()
+                  (interactive)
+                  (find-file org-work-notes-file)))
 
 (defun kjz-org-export-rich-text ()
   "Quick utility script to export Org data to HTML on the
