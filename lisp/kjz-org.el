@@ -22,10 +22,10 @@
 (global-set-key "\C-cc" 'org-capture)
 (setq org-capture-templates
       '(("t" "Todo" entry (file+datetree org-work-notes-file)
-         "* TODO %?\n  %a"
+         "* TODO %?\n  %i"
          :empty-lines 1)
         ("i" "General Item" entry (file+headline org-default-notes-file "Item")
-         "* %?\n  %i\n  %a")
+         "* %?\n  %i")
         ("w" "Work Item" entry (file+datetree org-work-notes-file)
          "* %?\n %i"
          :empty-lines 1)))
@@ -44,31 +44,11 @@
   "Quick utility script to export Org data to HTML on the
 clipboard to paste into other applications."
   (interactive)
-  (let ((org-export-with-author nil)
-        (org-export-with-date nil)
-        (org-export-with-email nil)
-        (org-export-with-creator nil)
-        (org-export-with-date nil)
-        (org-html-validation-link nil)
-        (org-export-with-statistics-cookie nil)
-        (org-export-time-stamp-file nil)
-        (org-export-with-title nil))
-    (org-html-export-as-html))
-  ;; Note we have to tweak the process coding system. It's set to Latin-1 by
-  ;; default, which completely trashes the chevrons in the string, making the
-  ;; AppleScript syntax invalid.
-  ;;
-  ;; The process here is simple.
-  ;;
-  ;;   1. Let org-mode do its export thing to an HTML buffer.
-  ;;
-  ;;   2. Convert the buffer text into a string of hex digits, 2 characters for
-  ;;   each buffer char.
-  ;;
-  ;;   3. Use AppleScript to set the HTML format version of the clipboard
-  ;;   contents. Unfortunately, pbpaste won't do this.
-  (let* ((default-process-coding-system '(undecided-unix . utf-8-unix))
-         (buf (apply #'concat (map 'list (lambda (c) (format "%0.2x" c)) (buffer-string))))
-         (cmd (concat "osascript -e 'set the clipboard to «data HTML" buf "»'")))
-    (shell-command cmd)
-    (kill-buffer-and-window)))
+  (save-window-excursion
+    (let* ((buf (org-export-to-buffer 'html "*Formatted Copy*" nil nil nil t)))
+      (with-current-buffer buf
+        (shell-command-on-region
+         (point-min)
+         (point-max)
+         "textutil -stdin -format html -convert rtf -stdout | pbcopy"))
+      (kill-buffer buf))))
