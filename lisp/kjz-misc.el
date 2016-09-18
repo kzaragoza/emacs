@@ -113,6 +113,9 @@
 (global-set-key (kbd "C-M-]") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-M-[") 'mc/edit-lines)
 
+;; Enable Company mode globally for completion.
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
