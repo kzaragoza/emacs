@@ -71,7 +71,7 @@
 (global-set-key (kbd "C-x C-d") 'dired)
 
 ;; Set up just the rectangle stuff from CUA mode.
-(cua-selection-mode 1)
+;; (cua-selection-mode 1)
 
 ;; Turn on Powerline.
 (require 'powerline)
