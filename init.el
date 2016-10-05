@@ -73,6 +73,7 @@
 (load "kjz-ruby.el")
 (load "kjz-go.el")
 (load "kjz-org.el")
+(load "kjz-psql.el")
 
 ;; Load any machine-specific definitions.
 (when (string-prefix-p "bosmac" (downcase system-name))
