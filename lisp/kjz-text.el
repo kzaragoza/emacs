@@ -27,10 +27,10 @@
 
 ; Get rid of html-helper-mode from the auto-mode-alist
 (setq auto-mode-alist
-      (remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
+      (cl-remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
 
 (setq magic-mode-alist
-      (remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
+      (cl-remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
 
 
 ;; Have Emacs recognize a single space as a sentence end.
