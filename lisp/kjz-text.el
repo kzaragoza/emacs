@@ -1,9 +1,5 @@
 ;; Utilities and other stuff I like when in text mdoes.
 
-; Wire up longlines-mode so we get some nice word wrapping in text modes. This isn't
-; set up in any hooks, so call it manually when wanted.
-(autoload 'longlines-mode "longlines.el" "Minor mode for editing long lines." t)
-
 ; Load the lorem ipsum generator. Very useful for placeholder text.  We put this
 ; hear rather than in a mode hook because we can use this in all kinds of
 ; documents, including code.
