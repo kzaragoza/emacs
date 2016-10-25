@@ -19,6 +19,7 @@
       (list
        'ace-window
        'company
+       'counsel
        'csharp-mode
        'etags-table
        'exec-path-from-shell
@@ -31,6 +32,7 @@
        'inf-ruby
        'inflections
        'ipython
+       'ivy
        'jump
        'lorem-ipsum
        'magit
@@ -63,7 +65,8 @@
 ;; Custom code and utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "kjz-misc.el")
-(load "kjz-helm.el")
+;; (load "kjz-helm.el")
+(load "kjz-ivy.el")
 (load "kjz-flex.el")
 (load "kjz-python.el")
 (load "kjz-text.el")
