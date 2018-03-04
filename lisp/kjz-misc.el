@@ -70,6 +70,9 @@
 ;; hit that keybinding by accident.
 (global-set-key (kbd "C-x C-d") 'dired)
 
+;; Enable the ability to edit file permissions in wdired.
+(setq wdired-allow-to-change-permissions t)
+
 ;; Set up just the rectangle stuff from CUA mode.
 ;; (cua-selection-mode 1)
 
