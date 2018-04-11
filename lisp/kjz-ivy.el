@@ -8,7 +8,8 @@
 (global-set-key (kbd "<f1> l") 'counsel-load-library)
 (global-set-key (kbd "<f1> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "C-c g") 'counsel-ag)
-(global-set-key (kbd "M-p") 'ffip)
+(global-set-key (kbd "M-p") 'counsel-git)
+(global-set-key (kbd "C-x j") 'counsel-imenu)
 
 ;; Wrap around when walking through completions.
 (setq ivy-wrap t)
