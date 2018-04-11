@@ -21,13 +21,6 @@
     (mark-whole-buffer)
     (shell-command-on-region (point-min) (point-max) xml-tidy-command nil t)))
 
-;; Get rid of html-helper-mode from the auto-mode-alist
-(setq auto-mode-alist
-      (cl-remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
-
-(setq magic-mode-alist
-      (cl-remove-if '(lambda (x) (eq (cdr x) 'html-helper-mode)) auto-mode-alist))
-
 ;; Have Emacs recognize a single space as a sentence end.
 (setq sentence-end-double-space nil)
 
