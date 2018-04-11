@@ -21,8 +21,6 @@
 
 ;; When searching for files, make sure we find .erb and .rake files too.
 (require 'find-file-in-project)
-(add-to-list 'ffip-patterns "*.rake" t)
-(add-to-list 'ffip-patterns "*.erb" t)
 (setq ffip-limit 10240)
 
 ;; Load environment from shell since Emacs.app doesn't actually run from a shell
@@ -64,7 +62,7 @@
 
 (defun kjz-retag-vagrant ()
   (interactive)
-  (let* ((default-directory "/ssh:default:/home/vagrant/src/sermo/")
+  (let* ((default-directory "/ssh:vagrant:/home/vagrant/src/sermo/")
          (command "ctags --tag-relative -R -e -f /home/vagrant/src/sermo/TAGS --exclude=.git --exclude=.rvm")
          (command-buffer-name "*Retag Output*"))
     (start-file-process "retag" (get-buffer-create command-buffer-name) "ctags" "--tag-relative" "-R" "-e" "-f" "/home/vagrant/src/sermo/TAGS" "--exclude=.git" "--exclude=.rvm")
@@ -82,3 +80,6 @@
 
 ;; Load custom utility functions for running psql against various environments.
 (load "kjz-psql.el")
+
+;; Set up Tramp prompt scanning to find some of our customized prompts where we stick control characters after the $.
+(setq tramp-shell-prompt-pattern "^.*$ .*")
