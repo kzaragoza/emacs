@@ -28,6 +28,9 @@
  '(org-agenda-files
    (quote
     ("~/Dropbox/OrgFiles/sermo.org" "~/Dropbox/OrgFiles/inbox.org")))
+ '(package-selected-packages
+   (quote
+    (web-mode eruby-mode yasnippet yaml-mode undo-tree tronesque-theme sql-indent solarized-theme smart-mode-line-powerline-theme slime rvm rspec-mode rinari restclient puppet-mode paredit osx-plist org multiple-cursors mmm-mode markdown-mode magit lorem-ipsum json-reformat ipython ibuffer-vc helm-ls-git helm-company helm-ag graphviz-dot-mode go-mode gitlab find-file-in-project expand-region exec-path-from-shell etags-table ess ein debbugs csv-mode csharp-mode counsel company-flx cider ag ace-window ace-jump-mode)))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
