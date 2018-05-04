@@ -14,53 +14,7 @@
 
 ;; Set up packages and ensure that certain things are installed.
 (package-initialize)
-
-(setq *required-packages*
-      (list
-       'ace-window
-       'company
-       'counsel
-       'csharp-mode
-       'etags-table
-       'exec-path-from-shell
-       'expand-region
-       'find-file-in-project
-       'findr
-       'go-mode
-       'helm
-       'helm-ls-git
-       'inf-ruby
-       'inflections
-       'ipython
-       'ivy
-       'jump
-       'lorem-ipsum
-       'magit
-       'markdown-mode
-       'mmm-mode
-       'multiple-cursors
-       'powerline
-       'rinari
-       'rspec-mode
-       'ruby-compilation
-       'rvm
-       'sql-indent
-       'undo-tree
-       'which-key
-       'yasnippet
-       ))
-
-(defun kjz-ensure-packages-installed (packages)
-  (mapc (lambda (name)
-          (when (not (package-installed-p name))
-            (package-install name)))
-        packages))
-
-(condition-case nil
-    (kjz-ensure-packages-installed *required-packages*)
-    (error
-     (package-refresh-contents)
-     (kjz-ensure-packages-installed *required-packages*)))
+(package-install-selected-packages)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom code and utilities
