@@ -80,6 +80,11 @@
 (require 'powerline)
 (powerline-default-theme)
 
+;; Copy whatever is on the clipboard to the kill ring before whacking it with a
+;; fresh kill. This will avoid a lot of pain when copying and pasting across
+;; applications.
+(setq save-interprogram-paste-before-kill t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
