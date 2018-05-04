@@ -119,6 +119,10 @@
 ;; Enable Company mode globally for completion.
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; Enable which-key mode to prompt for key combinations that I can never seem to
+;; remember.
+(which-key-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

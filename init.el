@@ -46,6 +46,7 @@
        'rvm
        'sql-indent
        'undo-tree
+       'which-key
        'yasnippet
        ))
 
