@@ -20,11 +20,9 @@
 ;; Custom code and utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "kjz-misc.el")
-;; (load "kjz-helm.el")
 (load "kjz-ivy.el")
 (load "kjz-python.el")
 (load "kjz-text.el")
-;; (load "kjz-mmm.el")
 (load "kjz-lisp.el")
 (load "kjz-javascript.el")
 (load "kjz-ruby.el")
