@@ -9,10 +9,6 @@
 (when (equal system-type 'darwin)
   (exec-path-from-shell-initialize))
 
-;; Set the initial frame size/position for Carbon Emacs.
-(if (boundp 'mac-carbon-version-string)
-    (setq initial-frame-alist '( (top . 1) (left . 1) )))
-
 ;; Use spaces instead of tabs pretty much everywhere. I tend to hate tabs and will
 ;; happily use C-q to get them.
 (setq-default indent-tabs-mode nil)
@@ -70,9 +66,6 @@
 ;; Enable the ability to edit file permissions in wdired.
 (setq wdired-allow-to-change-permissions t)
 
-;; Set up just the rectangle stuff from CUA mode.
-;; (cua-selection-mode 1)
-
 ;; Copy whatever is on the clipboard to the kill ring before whacking it with a
 ;; fresh kill. This will avoid a lot of pain when copying and pasting across
 ;; applications.
@@ -109,17 +102,13 @@
 
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
 (global-set-key (kbd "C-x g") 'magit-status)
-(setq magit-last-seen-setup-instructions "1.4.0")
-
-;; Bind keys for multiple-cursors mode.
-(global-set-key (kbd "M-[") 'mc/mark-previous-like-this)
-(global-set-key (kbd "M-]") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-M-]") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-M-[") 'mc/edit-lines)
 
 ;; Enable which-key mode to prompt for key combinations that I can never seem to
 ;; remember.
 (which-key-mode 1)
+
+;; Enable auto-complete everywhere.
+(global-auto-complete-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
