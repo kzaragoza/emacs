@@ -76,10 +76,6 @@
 ;; Set up just the rectangle stuff from CUA mode.
 ;; (cua-selection-mode 1)
 
-;; Turn on Powerline.
-(require 'powerline)
-(powerline-default-theme)
-
 ;; Copy whatever is on the clipboard to the kill ring before whacking it with a
 ;; fresh kill. This will avoid a lot of pain when copying and pasting across
 ;; applications.
@@ -120,9 +116,6 @@
 (global-set-key (kbd "M-]") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-M-]") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-M-[") 'mc/edit-lines)
-
-;; Enable Company mode globally for completion.
-(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Enable which-key mode to prompt for key combinations that I can never seem to
 ;; remember.
