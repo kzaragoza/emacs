@@ -4,7 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-syntactic-indentation nil)
+ '(custom-enabled-themes (quote (dichromacy)))
  '(custom-file "~/.emacs.d/custom.el")
+ '(custom-safe-themes
+   (quote
+    ("2b56bd7a702f4dd5f50db417ec2bcdd06a878a0e2834e9ab37ad3c5c93aaab74" default)))
  '(default-frame-alist
     (quote
      ((foreground-color . "white")
