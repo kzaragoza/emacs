@@ -35,10 +35,11 @@
     ("~/Dropbox/OrgFiles/sermo.org" "~/Dropbox/OrgFiles/inbox.org")))
  '(package-selected-packages
    (quote
-    (rspec-mode yasnippet auto-complete try which-key undo-tree rinari paredit-menu org mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region exec-path-from-shell etags-table csharp-mode counsel cider ace-window ace-jump-mode)))
+    (ag rspec-mode yasnippet auto-complete try which-key undo-tree rinari paredit-menu org mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region exec-path-from-shell etags-table csharp-mode counsel cider ace-window ace-jump-mode)))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
+ '(save-interprogram-paste-before-kill t)
  '(sgml-basic-offset 4)
  '(show-paren-style (quote mixed))
  '(speedbar-frame-parameters
