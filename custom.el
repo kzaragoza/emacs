@@ -12,6 +12,7 @@
       (menu-bar-lines . 1)
       (width . 132)
       (height . 44))))
+ '(dired-dwim-target t)
  '(ecb-layout-name "left13")
  '(ecb-options-version "2.40")
  '(espresso-indent-level 2)
