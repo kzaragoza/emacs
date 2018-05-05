@@ -24,9 +24,6 @@
 ;; In the general case, use newline and indent
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-;; Use buffer-menu rather than the buffer list.
-(global-set-key "\C-x\C-b" 'buffer-menu)
-
 ;; Set up windmove to move between windows in a frame. Use the Meta key rather
 ;; than the default Shift key.
 (require 'windmove)
@@ -80,6 +77,9 @@
 ;; fresh kill. This will avoid a lot of pain when copying and pasting across
 ;; applications.
 (setq save-interprogram-paste-before-kill t)
+
+;; Type less at confirmation prompts.
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
