@@ -11,6 +11,7 @@
 (global-set-key (kbd "M-p") 'counsel-git)
 (global-set-key (kbd "C-x j") 'counsel-imenu)
 (global-set-key (kbd "M-y") 'counsel-yank-pop)
+(global-set-key (kbd "C-s") 'swiper)
 
 ;; Wrap around when walking through completions.
 (setq ivy-wrap t)
