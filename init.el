@@ -29,7 +29,6 @@
 ;; Custom code and utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "kjz-misc.el")
-(load "kjz-ivy.el")
 (load "kjz-python.el")
 (load "kjz-text.el")
 (load "kjz-lisp.el")

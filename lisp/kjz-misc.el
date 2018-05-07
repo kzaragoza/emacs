@@ -87,9 +87,29 @@
 (use-package find-file-in-project
   :bind ("C-x t" . find-file-in-project))
 
+;; Set up Ivy, Counsel, and Swiper
+(use-package ivy
+  :bind (("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("<f1> f" . counsel-describe-function)
+         ("<f1> v" . counsel-describe-variable)
+         ("<f1> l" . counsel-load-library)
+         ("<f1> i" . counsel-info-lookup-symbol)
+         ("C-c g" . counsel-ag)
+         ("M-p" . counsel-git)
+         ("C-x j" . counsel-imenu)
+         ("M-y" . counsel-yank-pop)
+         ("C-s" . swiper))
+  :config
+  (progn
+    (setq ivy-wrap t)
+    (ivy-mode))
+  :demand t)
+
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
 (use-package magit
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :config (setq magit-completing-read-function 'ivy-completing-read))
 
 ;; Enable which-key mode to prompt for key combinations that I can never seem to
 ;; remember.
