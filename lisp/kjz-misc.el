@@ -16,14 +16,6 @@
 ;; In the general case, use newline and indent
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-;; Set up windmove to move between windows in a frame. Use the Meta key rather
-;; than the default Shift key.
-(require 'windmove)
-(windmove-default-keybindings 'meta)
-
-;; Set up ace-window
-(global-set-key (kbd "C-x o") 'ace-window)
-
 ;; Tell Emacs not to disable narrow functionality.
 (put 'narrow-to-region 'disabled nil)
 
@@ -52,9 +44,6 @@
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-Z") 'zap-to-char)
 
-;; Set up expand-region, a nifty little tool.
-(global-set-key (kbd "C-=") 'er/expand-region)
-
 ;; Bind C-x C-d to dired as well. I never use list-directory, but I sometimes
 ;; hit that keybinding by accident.
 (global-set-key (kbd "C-x C-d") 'dired)
@@ -70,41 +59,46 @@
 ;; Type less at confirmation prompts.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Modes and Mode Configuration
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Support for NSIS script development
-(autoload 'nsi-mode "nsi-mode" "nsi editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.nsi$" . nsi-mode))
-
-;; Set up yasnippet for snippets support.
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;; Load imenu. I use this for jumping around source files.
-(require 'imenu)
-
-;; Set up utility for finding files within a project.
-; This lets us scope our searches to the app subdirectories in the Sermo codebase.
-;(global-set-key (kbd "M-p") 'find-file-in-project)
-(global-set-key (kbd "C-x t") 'find-file-in-project)
-
 ;; Go ahead and delete text if you start typing while the region is enabled.
 (delete-selection-mode t)
 
 ;; Use IBuffer in place of the usual buffer-menu.
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Modes and Mode Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Set up ace-window
+(use-package ace-window
+  :bind ("C-x o" . ace-window))
+
+;; Set up expand-region, a nifty little tool.
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
+;; Set up yasnippet for snippets support. Don't load it everywhere. Use the
+;; minor mode where needed.
+(use-package yasnippet
+  :ensure t)
+
+;; Set up utility for finding files within a project.
+; This lets us scope our searches to the app subdirectories in the Sermo codebase.
+(use-package find-file-in-project
+  :bind ("C-x t" . find-file-in-project))
+
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
-(global-set-key (kbd "C-x g") 'magit-status)
+(use-package magit
+  :bind ("C-x g" . magit-status))
 
 ;; Enable which-key mode to prompt for key combinations that I can never seem to
 ;; remember.
-(which-key-mode 1)
+(use-package which-key
+  :config (which-key-mode 1))
 
 ;; Enable auto-complete everywhere.
-(global-auto-complete-mode 1)
+(use-package auto-complete
+  :config (global-auto-complete-mode 1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions

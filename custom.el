@@ -4,7 +4,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-syntactic-indentation nil)
- '(custom-enabled-themes (quote (dichromacy)))
  '(custom-file "~/.emacs.d/custom.el")
  '(custom-safe-themes
    (quote
@@ -35,7 +34,7 @@
     ("~/Dropbox/OrgFiles/sermo.org" "~/Dropbox/OrgFiles/inbox.org")))
  '(package-selected-packages
    (quote
-    (use-package ag rspec-mode yasnippet auto-complete try which-key undo-tree rinari paredit-menu org mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region exec-path-from-shell etags-table csharp-mode counsel cider ace-window ace-jump-mode)))
+    (sql-indent use-package ag rspec-mode yasnippet auto-complete try which-key undo-tree rinari paredit-menu org mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region exec-path-from-shell etags-table csharp-mode counsel cider ace-window ace-jump-mode)))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
@@ -58,16 +57,13 @@
     (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
  '(tool-bar-mode nil)
  '(transient-mark-mode t))
+
+;; for compatibility with older Aquamacs versions
+ (defvar aquamacs-140-custom-file-upgraded t)
+ (unless (fboundp 'auto-detect-longlines) (defun auto-detect-longlines () t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Andale Mono"))))
- '(mode-line ((t (:background "#d3f9ee" :foreground "#081724" :inverse-video nil :box (:line-width 1 :color "#d3f9ee")))))
- '(mode-line-inactive ((t (:inherit mode-line :background "#1d5483" :foreground "#081724" :inverse-video nil :box (:line-width 1 :color "#1d5483") :weight light))))
- '(powerline-active1 ((t (:inherit mode-line :background "grey22" :foreground "gray100")))))
-
-;; for compatibility with older Aquamacs versions
- (defvar aquamacs-140-custom-file-upgraded t)
- (unless (fboundp 'auto-detect-longlines) (defun auto-detect-longlines () t))
+ '(aw-leading-char-face ((t (:foreground "Yellow" :height 2.0)))))
