@@ -25,26 +25,26 @@
 
 ;; Load environment from shell since Emacs.app doesn't actually run from a shell
 ;; and thus doesn't have all the environment variables set.
-(setq exec-path-from-shell-variables
-      (append exec-path-from-shell-variables '("rvm_bin_path"
-                                               "GEM_HOME"
-                                               "GEM_PATH"
-                                               "IRBRC"
-                                               "MY_RUBY_HOME"
-                                               "rvm_path"
-                                               "rvm_prefix"
-                                               "rvm_version"
-                                               "V2_HOME"
-                                               "SERMO_SETTINGS_PATH"
-                                               "LOCALHOST_LOCALDOMAIN"
-                                               "DEV_ASSET_HOST"
-                                               "BUILD_TARGET"
-                                               "WORKING_COPY"
-                                               "ENABLE_JASMINE"
-                                               "EMAIL_OVERRIDE"
-                                               "PASSENGER_VERSION")))
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+;; (setq exec-path-from-shell-variables
+;;       (append exec-path-from-shell-variables '("rvm_bin_path"
+;;                                                "GEM_HOME"
+;;                                                "GEM_PATH"
+;;                                                "IRBRC"
+;;                                                "MY_RUBY_HOME"
+;;                                                "rvm_path"
+;;                                                "rvm_prefix"
+;;                                                "rvm_version"
+;;                                                "V2_HOME"
+;;                                                "SERMO_SETTINGS_PATH"
+;;                                                "LOCALHOST_LOCALDOMAIN"
+;;                                                "DEV_ASSET_HOST"
+;;                                                "BUILD_TARGET"
+;;                                                "WORKING_COPY"
+;;                                                "ENABLE_JASMINE"
+;;                                                "EMAIL_OVERRIDE"
+;;                                                "PASSENGER_VERSION")))
+;; (when (memq window-system '(mac ns))
+;;   (exec-path-from-shell-initialize))
 
 ;; Copy that environment into eshell when it starts up.
 (add-hook 'eshell-load-hook

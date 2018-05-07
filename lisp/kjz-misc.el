@@ -5,10 +5,6 @@
 ;; Set up load path for the one-off files.
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
-;; Load the PATH from the system.
-(when (equal system-type 'darwin)
-  (exec-path-from-shell-initialize))
-
 ;; Use spaces instead of tabs pretty much everywhere. I tend to hate tabs and will
 ;; happily use C-q to get them.
 (setq-default indent-tabs-mode nil)
