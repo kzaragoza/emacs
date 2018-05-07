@@ -1,9 +1,10 @@
-;; Utilities and other stuff I like when in text mdoes.
+;; Utilities and other stuff I like when in text modes.
 
 ;; Load the lorem ipsum generator. Very useful for placeholder text.  We put this
 ;; hear rather than in a mode hook because we can use this in all kinds of
 ;; documents, including code.
-(require 'lorem-ipsum)
+(use-package lorem-ipsum
+  :ensure t)
 
 ;; Set up reStructuredText support for text documents.
 (autoload 'rst-mode "rst.el" "Major mode for reStructuredText documents." t)
