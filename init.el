@@ -32,7 +32,6 @@
 (load "kjz-python.el")
 (load "kjz-text.el")
 (load "kjz-lisp.el")
-(load "kjz-javascript.el")
 (load "kjz-ruby.el")
 (load "kjz-go.el")
 (load "kjz-org.el")
