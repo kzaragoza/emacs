@@ -38,8 +38,9 @@
 (load "kjz-psql.el")
 
 ;; Load any machine-specific definitions.
-(when (string-prefix-p "bosmac" (downcase system-name))
-  (load "kjz-work.el"))
+(let ((fname (concat "~/.emacs.d/lisp/" (downcase system-name) ".el")))
+  (when (file-exists-p fname)
+    (load fname)))
 
 ;; (message "Loading .emacs done.")
 (add-hook 'emacs-startup-hook

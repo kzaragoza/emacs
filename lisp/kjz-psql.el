@@ -1,12 +1,9 @@
-(require 'sql)
-;; Set the default proxy-buffer to nil.
-(setq proxy-buffer nil)
-
-;; Set up PostgreSQL as the default product.
-(setq sql-mode-hook
-      (list
-       (lambda ()
-         (sql-set-product 'postgres))))
+(use-package sql
+  :config
+  (progn
+    ;; Set the default proxy-buffer to nil.
+    (setq proxy-buffer nil)
+    (sql-set-product 'postgres)))
 
 (defun foobuf ()
   "Create a scratch buffer to be used with one of the psql-* commands defined above."
@@ -80,25 +77,3 @@ the established forwarded ports." db-name db-host)))
          (kjz-psql-connect ,relay-host ,local-port ,db-host ,db-port ,db-name ,db-user)
          (other-window -1)))))
 
-(kjz-make-psql "owl" "tools.sermo.owl" 54321 "dball.sermo.owl" 5432 "suds_owl" "sermo")
-(kjz-make-psql "ape" "tools.sermo.ape" 54322 "dball.sermo.ape" 5432 "suds_ape" "sermo")
-(kjz-make-psql "bee" "tools.sermo.bee" 54323 "dball.sermo.bee" 5432 "suds_bee" "sermo")
-(kjz-make-psql "eel" "tools.sermo.eel" 54324 "dball.sermo.eel" 5432 "suds_eel" "sermo")
-(kjz-make-psql "eeldw" "tools.sermo.eel" 54325 "dw.sermo.eel" 5432 "telemetry_eel" "sermo")
-(kjz-make-psql "prod" "tools.sermo.prod" 54326 "dball.sermo.prod" 5432 "suds_production" "sermo")
-(kjz-make-psql "proddw" "tools.sermo.prod" 54327 "dw.sermo.prod" 5432 "telemetry_production" "sermo")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Data Warehouse
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun warehouse ()
-  (interactive)
-  (let ((buf (generate-new-buffer "*SQL Scratch warehouse"))
-        (sql-server "warehouse.sermo.prod")
-        (sql-database "warehouse_production")
-        (sql-port 5432))
-    (switch-to-buffer buf)
-    (sql-mode)
-    (sql-postgres)
-    (other-window -1)))
