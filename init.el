@@ -23,7 +23,7 @@
   (require 'use-package))
 
 ;; Install previously selected packages per what's in the custom file.
-(package-install-selected-packages)
+;; (package-install-selected-packages)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom code and utilities
