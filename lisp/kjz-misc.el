@@ -85,7 +85,8 @@
 ;; Set up utility for finding files within a project.
 ; This lets us scope our searches to the app subdirectories in the Sermo codebase.
 (use-package find-file-in-project
-  :bind ("C-x t" . find-file-in-project))
+  :bind ("C-x t" . find-file-in-project)
+  :config (setq ffip-limit 10240))
 
 ;; Set up Ivy, Counsel, and Swiper
 (use-package ivy
