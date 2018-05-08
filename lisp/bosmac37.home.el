@@ -99,3 +99,7 @@
 
 ;; Set up Tramp prompt scanning to find some of our customized prompts where we stick control characters after the $.
 (setq tramp-shell-prompt-pattern "^.*$ .*")
+
+;; Set up support for editing Puppet files.
+(use-package puppet-mode
+  :mode "\\.pp$")

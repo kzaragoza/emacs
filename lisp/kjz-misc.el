@@ -121,6 +121,24 @@
 (use-package auto-complete
   :config (global-auto-complete-mode 1))
 
+;; Use web-mode for dealing with HTML templates (erb, jinja2, etc.)
+(use-package web-mode
+  :ensure t)
+
+;; I deal with lots of CSV files. Use csv-mode to make life easier.
+(use-package csv-mode
+  :mode "\\.csv$")
+
+;; Set up YAML file support. This format has become quite popular.
+(use-package yaml-mode
+  :mode (("\\.yml$" . yaml-mode)
+         ("\\.yaml$" . yaml-mode)))
+
+;; Markdown is likewise popular and used all over the place.
+(use-package markdown-mode
+  :mode (("\\.md$" . markdown-mode)
+         ("\\.markdown$" . markdown-mode)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
