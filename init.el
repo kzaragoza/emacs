@@ -38,7 +38,9 @@
 (load "kjz-psql.el")
 
 ;; Load any machine-specific definitions.
-(let ((fname (concat "~/.emacs.d/lisp/" (downcase system-name) ".el")))
+(let* ((fqdn (downcase system-name))
+      (localname (car (split-string fqdn "\\.")))
+      (fname (concat "~/.emacs.d/lisp/" localname ".el")))
   (when (file-exists-p fname)
     (load fname)))
 
