@@ -9,7 +9,14 @@
 
 ;; Add some other archives to the package manager.
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+
+;; Patch things up to avoid issues on MacOS. See
+;; https://emacs.stackexchange.com/questions/68288/error-retrieving-https-elpa-gnu-org-packages-archive-contents
+(when (and (equal emacs-version "27.2")
+           (eql system-type 'darwin))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; Set up packages and ensure that certain things are installed.
 (package-initialize)
