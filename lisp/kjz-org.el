@@ -1,11 +1,14 @@
 ;;; Set up org mode for tracking TODOs and such.
 (use-package org
+  :ensure t
   :mode ("\\.org$" . org-mode)
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture))
+  :hook
+  visual-line-mode
   :config
   (progn
-    (setq org-directory "~/Dropbox/OrgFiles")
+    (setq org-directory "~/org")
     (setq org-log-done t)
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -31,6 +34,10 @@
              "* %?\n %i"
              :empty-lines 1)))
 
+    ;; Hide the leading asterisks and some markup to reduce the visual noise.
+    (setq org-hide-leading-stars t)
+    (setq org-hide-emphasis-markers t)
+
     ;; Set up a shortcut to quickly go to the inbox for processing and refiling.
     (global-set-key "\C-ci"
                     (lambda ()
@@ -41,10 +48,7 @@
                       (interactive)
                       (find-file org-work-notes-file)))
     ;; Setup LaTeX export to use xelatex.
-    (setq org-latex-pdf-process '("xelatex -interaction nonstopmode -output-directory %o %f" "xelatex -interaction nonstopmode -output-directory %o %f" "xelatex -interaction nonstopmode -output-directory %o %f"))
-
-    ;; Point to the brew-installed Ditaa
-    (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.9/libexec/ditaa0_9.jar")))
+    (setq org-latex-pdf-process '("xelatex -interaction nonstopmode -output-directory %o %f" "xelatex -interaction nonstopmode -output-directory %o %f" "xelatex -interaction nonstopmode -output-directory %o %f"))))
 
 (defun kjz-org-export-rich-text ()
   "Quick utility script to export Org data to HTML on the
