@@ -63,3 +63,21 @@ clipboard to paste into other applications."
          "textutil -stdin -format html -convert rtf -stdout | pbcopy"))
       (kill-buffer buf))))
 
+;; Set up Deft to do fast searches through my org mode files.
+(use-package deft
+  :ensure t
+  :bind ("<f8>" . 'deft)
+  :config
+  (setq deft-directory "~/org")
+  (setq deft-recursive t)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-file-naming-rules '((noslash . "-")
+                                 (nospace . "-")
+                                 (case-fn . downcase)))
+  (setq deft-org-mode-title-prefix t)
+  (setq deft-default-extension "org"))
+
+;; Patch due to Deft using a deprecated Org Mode function.
+(defun org-open-file-with-emacs (path)
+  "Deft compatability shim to support opening Org links with more recent org-mode versions."
+    (org-open-file path t))
