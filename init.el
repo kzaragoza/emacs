@@ -32,6 +32,13 @@
 ;; Install previously selected packages per what's in the custom file.
 ;; (package-install-selected-packages)
 
+;; On MacOS, copy in and set up the path when run as an application rather than
+;; being launched from the shell.
+(when (memq window-system '(mac ns))
+  (use-package exec-path-from-shell
+    :ensure t)
+  (exec-path-from-shell-initialize))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom code and utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
