@@ -2,5 +2,5 @@
 (use-package slime
   :ensure t
   :config (progn
-            (setq inferior-lisp-program "/usr/local/bin/sbcl --no-linedit")
+            (setq inferior-lisp-program "sbcl --no-linedit")
             (setq slime-contribs '(slime-fancy))))
