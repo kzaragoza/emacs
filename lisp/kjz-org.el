@@ -50,6 +50,11 @@
     ;; Setup LaTeX export to use xelatex.
     (setq org-latex-pdf-process '("xelatex -interaction nonstopmode -output-directory %o %f" "xelatex -interaction nonstopmode -output-directory %o %f" "xelatex -interaction nonstopmode -output-directory %o %f"))))
 
+;; Set up ox-clip as a replacement for my custom function below. The ox-clip
+;; package should be cross platform.
+(use-package ox-clip
+  :ensure t)
+
 (defun kjz-org-export-rich-text ()
   "Quick utility script to export Org data to HTML on the
 clipboard to paste into other applications."
