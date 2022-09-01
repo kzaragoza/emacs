@@ -65,6 +65,10 @@
 ;; Use IBuffer in place of the usual buffer-menu.
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;; Enable fido-mode for completion.
+(fido-mode 1)
+(fido-vertical-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -82,31 +86,6 @@
 (use-package yasnippet
   :ensure t)
 
-;; Set up utility for finding files within a project.
-; This lets us scope our searches to the app subdirectories in the Sermo codebase.
-(use-package find-file-in-project
-  :bind ("C-x t" . find-file-in-project)
-  :config (setq ffip-limit 10240))
-
-;; Set up Ivy, Counsel, and Swiper
-(use-package ivy
-  :bind (("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)
-         ("<f1> f" . counsel-describe-function)
-         ("<f1> v" . counsel-describe-variable)
-         ("<f1> l" . counsel-load-library)
-         ("<f1> i" . counsel-info-lookup-symbol)
-         ("C-c g" . counsel-ag)
-         ("M-p" . counsel-git)
-         ("C-x j" . counsel-imenu)
-         ("M-y" . counsel-yank-pop)
-         ("C-s" . swiper))
-  :config
-  (progn
-    (setq ivy-wrap t)
-    (ivy-mode))
-  :demand t)
-
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
 (use-package magit
   :bind ("C-x g" . magit-status)
@@ -118,8 +97,8 @@
   :config (which-key-mode 1))
 
 ;; Enable auto-complete everywhere.
-(use-package auto-complete
-  :config (global-auto-complete-mode 1))
+;; (use-package auto-complete
+;;   :config (global-auto-complete-mode 1))
 
 ;; Use web-mode for dealing with HTML templates (erb, jinja2, etc.)
 (use-package web-mode
