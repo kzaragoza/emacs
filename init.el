@@ -49,7 +49,6 @@
 (load "kjz-ruby.el")
 (load "kjz-go.el")
 (load "kjz-org.el")
-(load "kjz-psql.el")
 
 ;; Load any machine-specific definitions.
 (let* ((fqdn (downcase system-name))
