@@ -97,8 +97,7 @@
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
 (use-package magit
   :ensure t
-  :bind ("C-x g" . magit-status)
-  :config (setq magit-completing-read-function 'ivy-completing-read))
+  :bind ("C-x g" . magit-status))
 
 ;; Enable which-key mode to prompt for key combinations that I can never seem to
 ;; remember.
@@ -136,7 +135,6 @@
   :ensure t
   :config
   (progn
-    (setq projectile-completion-system 'ivy)
     (projectile-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
