@@ -3,6 +3,11 @@
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode))
 
+(use-package py-autopep8
+  :ensure t
+  :after python
+  :hook ((python-mode . py-autopep8-mode)))
+
 ;; Set up the Speedbar to recognize whether there is an up-to-date object file
 ;; for the given python script.
 (add-hook 'speedbar-load-hook
