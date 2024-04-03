@@ -1,4 +1,5 @@
 (use-package go-mode
+  :ensure t
   :config
   (progn
     (add-hook 'go-mode-hook
