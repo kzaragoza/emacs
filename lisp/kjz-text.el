@@ -14,6 +14,12 @@
 ;; 	      auto-mode-alist))
 ;; (add-hook 'rst-adjust-hook 'rst-toc-update)
 
+;; Load up Markdown mode.
+(use-package markdown-mode
+  :ensure t
+  :mode (("\\.md$" . markdown-mode)
+         ("\\.markdown$" . markdown-mode)))
+
 ;; Function to call tidy on an XML document.
 (setq xml-tidy-command "tidy -q -i -xml -wrap 75")
 (defun xml-tidy-buffer ()
