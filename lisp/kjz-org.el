@@ -12,14 +12,13 @@
     (setq org-log-done t)
     (org-babel-do-load-languages
      'org-babel-load-languages
-     '((R . nil)
-       (ditaa . t)
+     '((ditaa . t)
        (dot . t)
        (emacs-lisp . t)
        (js . t)
        (python . t)
        (ruby . t)
-       (sh . t)
+       (shell . t)
        (sql . t)))
     ;; Use org-capture for quick entry of items.
     (setq org-default-notes-file (concat org-directory "/inbox.org"))
