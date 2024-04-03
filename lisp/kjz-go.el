@@ -3,7 +3,7 @@
   :config
   (progn
     (add-hook 'go-mode-hook
-              '(lambda ()
+              (lambda ()
                  (local-set-key (kbd "C-c C-k") 'godoc)
                  (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
                  (local-set-key (kbd "C-c C-g") 'go-goto-imports)
