@@ -36,6 +36,9 @@
 ;; Bind F5 to revert-buffer for convenience.
 (global-set-key [f5] 'revert-buffer-without-confirm)
 
+;; Automatically revert files changed on disk.
+(global-auto-revert-mode t)
+
 ;; Store backup files in a separate directory.
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
