@@ -5,6 +5,9 @@
 ;; Set up load path for the one-off files.
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+;; Use the modus-vivendi theme.
+(load-theme 'modus-vivendi)
+
 ;; Use spaces instead of tabs pretty much everywhere. I tend to hate tabs and will
 ;; happily use C-q to get them.
 (setq-default indent-tabs-mode nil)
@@ -14,7 +17,7 @@
 (show-paren-mode)
 
 ;; In the general case, use newline and indent
-(global-set-key (kbd "RET") 'newline-and-indent)
+;; (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Tell Emacs not to disable narrow functionality.
 (put 'narrow-to-region 'disabled nil)
@@ -75,10 +78,12 @@
 
 ;; Set up ace-window
 (use-package ace-window
+  :ensure t
   :bind ("C-x o" . ace-window))
 
 ;; Set up expand-region, a nifty little tool.
 (use-package expand-region
+  :ensure t
   :bind ("C-=" . er/expand-region))
 
 ;; Set up yasnippet for snippets support. Don't load it everywhere. Use the
@@ -88,12 +93,14 @@
 
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
 (use-package magit
+  :ensure t
   :bind ("C-x g" . magit-status)
   :config (setq magit-completing-read-function 'ivy-completing-read))
 
 ;; Enable which-key mode to prompt for key combinations that I can never seem to
 ;; remember.
 (use-package which-key
+  :ensure t
   :config (which-key-mode 1))
 
 ;; Enable auto-complete everywhere.
@@ -106,15 +113,18 @@
 
 ;; I deal with lots of CSV files. Use csv-mode to make life easier.
 (use-package csv-mode
+  :ensure t
   :mode "\\.csv$")
 
 ;; Set up YAML file support. This format has become quite popular.
 (use-package yaml-mode
+  :ensure t
   :mode (("\\.yml$" . yaml-mode)
          ("\\.yaml$" . yaml-mode)))
 
 ;; Markdown is likewise popular and used all over the place.
 (use-package markdown-mode
+  :ensure t
   :mode (("\\.md$" . markdown-mode)
          ("\\.markdown$" . markdown-mode)))
 

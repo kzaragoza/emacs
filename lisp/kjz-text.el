@@ -7,12 +7,12 @@
   :ensure t)
 
 ;; Set up reStructuredText support for text documents.
-(autoload 'rst-mode "rst.el" "Major mode for reStructuredText documents." t)
-(setq auto-mode-alist
-      (append '(("\\.rst$" . rst-mode)
-		("\\.rest$" . rst-mode))
-	      auto-mode-alist))
-(add-hook 'rst-adjust-hook 'rst-toc-update)
+;; (autoload 'rst-mode "rst.el" "Major mode for reStructuredText documents." t)
+;; (setq auto-mode-alist
+;;       (append '(("\\.rst$" . rst-mode)
+;; 		("\\.rest$" . rst-mode))
+;; 	      auto-mode-alist))
+;; (add-hook 'rst-adjust-hook 'rst-toc-update)
 
 ;; Function to call tidy on an XML document.
 (setq xml-tidy-command "tidy -q -i -xml -wrap 75")
