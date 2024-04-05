@@ -9,6 +9,9 @@
   :after python
   :hook ((python-mode . py-autopep8-mode)))
 
+(use-package pyenv-mode
+  :ensure t)
+
 ;; Set up the Speedbar to recognize whether there is an up-to-date object file
 ;; for the given python script.
 (add-hook 'speedbar-load-hook
