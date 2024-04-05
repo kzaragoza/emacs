@@ -1,7 +1,8 @@
 ;; Set up support for Python development.
 (use-package python
   :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode))
+  :interpreter ("python" . python-mode)
+  :hook (python-mode . eglot-ensure))
 
 (use-package py-autopep8
   :ensure t
