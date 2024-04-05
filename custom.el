@@ -8,10 +8,10 @@
  '(custom-safe-themes
    '("2b56bd7a702f4dd5f50db417ec2bcdd06a878a0e2834e9ab37ad3c5c93aaab74" default))
  '(default-frame-alist
-    '((foreground-color . "white")
-      (background-color . "black")
-      (width . 132)
-      (height . 44)))
+   '((foreground-color . "white")
+     (background-color . "black")
+     (width . 132)
+     (height . 44)))
  '(dired-dwim-target t)
  '(ecb-layout-name "left13")
  '(ecb-options-version "2.40")
@@ -29,7 +29,7 @@
  '(org-agenda-files
    '("~/Dropbox/OrgFiles/sermo.org" "~/Dropbox/OrgFiles/inbox.org"))
  '(package-selected-packages
-   '(yaml-mode csv-mode lsp-mode exec-path-from-shell ox-clip deft org org-bullets orgalist swiper ivy cargo rust-mode slime projectile web-mode yasnippet which-key use-package undo-tree try sql-indent rspec-mode rinari paredit-menu mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region etags-table csharp-mode counsel cider ag ace-window ace-jump-mode ac-slime))
+   '(vterm py-autopep8 yaml-mode csv-mode lsp-mode exec-path-from-shell ox-clip deft org org-bullets orgalist swiper ivy cargo rust-mode slime projectile web-mode yasnippet which-key use-package undo-tree try sql-indent rspec-mode rinari paredit-menu mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region etags-table csharp-mode counsel cider ag ace-window ace-jump-mode ac-slime))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
