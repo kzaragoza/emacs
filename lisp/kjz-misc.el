@@ -79,11 +79,6 @@
 ;; Modes and Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Set up ace-window
-(use-package ace-window
-  :ensure t
-  :bind ("C-x o" . ace-window))
-
 ;; Set up expand-region, a nifty little tool.
 (use-package expand-region
   :ensure t
