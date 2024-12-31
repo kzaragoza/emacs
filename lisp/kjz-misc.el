@@ -125,20 +125,6 @@
   :mode (("\\.md$" . markdown-mode)
          ("\\.markdown$" . markdown-mode)))
 
-;; Set up tree-sitter.
-(use-package tree-sitter
-  :ensure t)
-
-(use-package tree-sitter-langs
-  :after tree-sitter
-  :ensure t
-  :config
-  (global-tree-sitter-mode))
-
-(use-package treesit-auto
-  :config
-  (global-treesit-auto-mode))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utilities and Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
