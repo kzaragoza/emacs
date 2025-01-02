@@ -29,11 +29,13 @@
     (setq org-capture-templates
           '(("t" "Todo" entry (file+headline org-default-notes-file "Todo")
              "* TODO %?\nCAPTURED: %u\n%i"
-             :empty-lines 1)
+             :empty-lines-after 1)
             ("i" "General Note" entry (file+headline org-default-notes-file "Notes")
-             "* %?\nCAPTURED: %u\n%i")
+             "* %?\nCAPTURED: %u\n%i"
+             :empty-lines-after 1)
             ("m" "Meeting" entry (file+datetree org-default-notes-file)
-             "* %? %(org-set-tags \"meeting\")\n%U\n%i")))
+             "* %? %(org-set-tags \"meeting\")\n%U\n%i"
+             :empty-lines-after 1)))
 
     ;; Hide the leading asterisks and some markup to reduce the visual noise.
     ;; (setq org-hide-leading-stars t)
