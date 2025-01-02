@@ -27,9 +27,9 @@
  '(ns-pop-up-frames nil)
  '(ns-use-srgb-colorspace nil)
  '(org-agenda-files
-   '("~/Dropbox/OrgFiles/sermo.org" "~/Dropbox/OrgFiles/inbox.org"))
+   '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
  '(package-selected-packages
-   '(pyenv-mode pyenv treesit-auto tree-sitter-langs tree-sitter trr vterm py-autopep8 yaml-mode csv-mode lsp-mode exec-path-from-shell ox-clip org org-bullets orgalist cargo rust-mode slime projectile web-mode yasnippet which-key use-package undo-tree try sql-indent rspec-mode rinari paredit-menu mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region etags-table cider ace-window ace-jump-mode ac-slime))
+   '(org-tempo pyenv-mode pyenv treesit-auto tree-sitter-langs tree-sitter trr vterm py-autopep8 yaml-mode csv-mode lsp-mode exec-path-from-shell ox-clip org org-bullets orgalist cargo rust-mode slime projectile web-mode yasnippet which-key use-package undo-tree try sql-indent rspec-mode rinari paredit-menu mmm-mode magit lorem-ipsum jinja2-mode ipython graphviz-dot-mode go-mode find-file-in-project expand-region etags-table cider ace-window ace-jump-mode ac-slime))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
