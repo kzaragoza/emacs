@@ -129,15 +129,6 @@
 ;; Utilities and Custom Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Easy toggle to full-screen mode.
-(defun fullscreen ()
-  "Toggles the current frame to full-screen and back."
-  (interactive)
-  (set-frame-parameter nil 'fullscreen
-                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
-(global-set-key [(meta return)] 'fullscreen)
-
-
 ;; Utility functions for common stuff.
 
 (defun untabify-buffer ()
