@@ -7,6 +7,3 @@
   :ensure t
   :after ruby-mode)
 
-(use-package rinari
-  :after ruby-mode
-  :ensure t)
