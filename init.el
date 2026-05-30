@@ -10,7 +10,6 @@
 ;; Add some other archives to the package manager.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
 ;; Set up packages and ensure that certain things are installed.
 (package-initialize)
