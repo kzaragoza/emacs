@@ -95,14 +95,6 @@
   :ensure t
   :config (which-key-mode 1))
 
-;; Enable auto-complete everywhere.
-;; (use-package auto-complete
-;;   :config (global-auto-complete-mode 1))
-
-;; Use web-mode for dealing with HTML templates (erb, jinja2, etc.)
-(use-package web-mode
-  :ensure t)
-
 ;; I deal with lots of CSV files. Use csv-mode to make life easier.
 (use-package csv-mode
   :ensure t

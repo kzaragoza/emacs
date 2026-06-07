@@ -28,10 +28,10 @@
  '(org-agenda-files
    '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
  '(package-selected-packages
-   '(ac-slime cargo cider csv-mode etags-table exec-path-from-shell expand-region
-              go-mode graphviz-dot-mode lorem-ipsum magit org ox-clip projectile
-              py-autopep8 pyenv-mode rspec-mode rust-mode sql-indent use-package
-              vterm web-mode which-key yaml-mode))
+   '(ac-slime cargo cider csv-mode exec-path-from-shell expand-region go-mode
+              graphviz-dot-mode lorem-ipsum magit org ox-clip py-autopep8
+              pyenv-mode rspec-mode rust-mode sql-indent vterm which-key
+              yaml-mode))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
