@@ -84,11 +84,6 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
-;; Set up yasnippet for snippets support. Don't load it everywhere. Use the
-;; minor mode where needed.
-(use-package yasnippet
-  :ensure t)
-
 ;; Bind a useful keystroke to magit-status since I use it so damned much.
 (use-package magit
   :ensure t

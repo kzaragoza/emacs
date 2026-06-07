@@ -29,10 +29,9 @@
    '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
  '(package-selected-packages
    '(ac-slime cargo cider csv-mode etags-table exec-path-from-shell expand-region
-              go-mode graphviz-dot-mode lorem-ipsum lsp-mode magit ox-clip
-              projectile py-autopep8 pyenv-mode rinari rspec-mode rust-mode
-              sql-indent try use-package vterm web-mode which-key yaml-mode
-              yasnippet))
+              go-mode graphviz-dot-mode lorem-ipsum magit org ox-clip projectile
+              py-autopep8 pyenv-mode rspec-mode rust-mode sql-indent use-package
+              vterm web-mode which-key yaml-mode))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
