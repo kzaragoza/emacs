@@ -30,8 +30,7 @@
  '(package-selected-packages
    '(ac-slime cargo cider csv-mode exec-path-from-shell expand-region go-mode
               graphviz-dot-mode lorem-ipsum magit org ox-clip py-autopep8
-              pyenv-mode rspec-mode rust-mode sql-indent vterm which-key
-              yaml-mode))
+              pyenv-mode rspec-mode rust-mode sql-indent vterm yaml-mode))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)
