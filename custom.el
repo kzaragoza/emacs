@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-syntactic-indentation nil)
+ '(completion-styles '(basic partial-completion flex))
  '(custom-file "~/.emacs.d/custom.el")
  '(custom-safe-themes
    '("2b56bd7a702f4dd5f50db417ec2bcdd06a878a0e2834e9ab37ad3c5c93aaab74" default))
@@ -28,9 +29,10 @@
  '(org-agenda-files
    '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
  '(package-selected-packages
-   '(ac-slime cargo cider csv-mode exec-path-from-shell expand-region go-mode
-              graphviz-dot-mode lorem-ipsum magit org ox-clip py-autopep8
-              pyenv-mode rspec-mode rust-mode sql-indent vterm yaml-mode))
+   '(ac-slime agent-shell cargo cider csv-mode deft exec-path-from-shell
+              expand-region ghostel go-mode graphviz-dot-mode lorem-ipsum magit
+              olivetti org ox-clip py-autopep8 pyenv-mode rspec-mode rust-mode
+              sql-indent vterm yaml-mode))
  '(ruby-deep-arglist nil)
  '(ruby-deep-indent-paren nil)
  '(save-abbrevs nil)

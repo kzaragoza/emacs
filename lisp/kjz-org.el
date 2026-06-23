@@ -1,17 +1,17 @@
+(setq my-notes-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
+
 ;;; Set up org mode for tracking TODOs and such.
 (use-package org
   :ensure t
   :mode ("\\.org$" . org-mode)
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture))
-  :hook
-  visual-line-mode
   :config
   (progn
     ;; Org-tempo lets us expand the structured templates in org like <s for source
     ;; blocks.
     (require 'org-tempo)
-    (setq org-directory "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
+    (setq org-directory my-notes-directory)
     (add-to-list 'org-agenda-files org-directory)
     (setq org-log-done t)
     (org-babel-do-load-languages
@@ -70,3 +70,43 @@ with it."
          "textutil -stdin -format html -convert rtf -stdout | pbcopy"))
       (kill-buffer buf))))
 
+;; Set up Deft to quickly search through notes and capture new ones.
+(use-package deft
+  :ensure t
+  ;; Bind Deft to a convenient global key sequence
+  :bind ("C-c n d" . deft)
+  
+  :config
+  ;; 1. Base Directory Setup
+  ;; Adjust this path if your iCloud Drive folder uses a different mount point
+  (setq deft-directory my-notes-directory)
+  
+  ;; 2. Enable Recursive Tree Searching
+  ;; This allows Deft to dive into /projects, /reference, /journal, etc.
+  (setq deft-recursive t)
+
+  ;; 3. File Extension Target Rules
+  ;; Default to creating .org files, but look for .txt files as well
+  (setq deft-extensions '("org" "md" "markdown" "txt"))
+  (setq deft-default-extension "org")
+  
+  ;; 4. Dashboard Title & File Creation Settings
+  ;; Uses the actual file name for the title line. Combined with the next setting,
+  ;; typing "projects/my-new-note" and hitting Enter creates that file inside the subfolder.
+  (setq deft-use-filename-as-title t)
+  (setq deft-use-filter-string-for-filename t)
+  
+  ;; FIX: Tell Deft NOT to convert forward slashes into hyphens
+  (setq deft-file-naming-rules
+        '((noslash . nil)    ; Allow slashes to create subdirectories
+          (nospace . "-")    ; Convert spaces to hyphens for clean URLs/filenames
+          (case-fn . downcase))) ; Force filenames to lowercase
+
+  ;; 5. UI Optimization & Performance
+  ;; This regex strips out ugly newlines, tabs, and Org-mode metadata lines 
+  ;; (like #+title: or #+filetags:) when building the inline file summary previews.
+  (setq deft-strip-summary-regexp
+        (concat "\\("
+                "[\n\t]" 
+                "\\|^#\\+[a-zA-Z_]+:.*$" 
+                "\\)")))
