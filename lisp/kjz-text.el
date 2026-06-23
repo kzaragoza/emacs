@@ -18,7 +18,9 @@
 (use-package markdown-mode
   :ensure t
   :mode (("\\.md$" . markdown-mode)
-         ("\\.markdown$" . markdown-mode)))
+         ("\\.markdown$" . markdown-mode))
+  :config
+  (add-hook 'markdown-mode-hook #'visual-line-mode))
 
 ;; Function to call tidy on an XML document.
 (setq xml-tidy-command "tidy -q -i -xml -wrap 75")
