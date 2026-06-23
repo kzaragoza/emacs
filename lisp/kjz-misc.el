@@ -71,6 +71,10 @@
 ;; Use IBuffer in place of the usual buffer-menu.
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;; Bind M-o to other-window. This makes it easier to move across windows
+;; compared to the default key chord of C-x o.
+(global-set-key (kbd "M-o") 'other-window)
+
 ;; Enable fido-mode for completion.
 (fido-mode 1)
 (fido-vertical-mode 1)
