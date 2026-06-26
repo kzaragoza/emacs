@@ -1,26 +1,22 @@
 ;;; This is my .emacs file
 (message "Loading .emacs...")
 
-(add-to-list 'load-path "~/.emacs.d/lisp" 't)
+(add-to-list 'load-path (locate-user-emacs-file "lisp") 't)
 
 ;; Move the customizations to a separate file.
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file)
 
 ;; Add some other archives to the package manager.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
+;; When things slow down on init, running (use-package-report) can show which
+;; use-package directives are using up a lot of time.
+(setq use-package-compute-statistics t)
+
 ;; Set up packages and ensure that certain things are installed.
 (package-initialize)
-
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package))
 
 ;; On MacOS, copy in and set up the path when run as an application rather than
 ;; being launched from the shell.
@@ -54,4 +50,5 @@
                      (format "%.2f seconds"
                              (float-time
                               (time-subtract after-init-time before-init-time)))
-                     gcs-done)))
+                     gcs-done)
+            (kjz-restore-gc-values)))

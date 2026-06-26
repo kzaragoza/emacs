@@ -3,6 +3,7 @@
 ;;; Set up org mode for tracking TODOs and such.
 (use-package org
   :ensure t
+  :defer t
   :mode ("\\.org$" . org-mode)
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture))
@@ -53,7 +54,9 @@
 ;; Set up ox-clip to copy formatted content from org files. The ox-clip
 ;; package should be cross platform.
 (use-package ox-clip
-  :ensure t)
+  :ensure t
+  :after org
+  :defer t)
 
 (defun kjz-org-export-rich-text ()
   "Quick utility script to export Org data to HTML on the
